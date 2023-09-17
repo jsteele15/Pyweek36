@@ -35,7 +35,7 @@ entity_list = [practise_entity]
 
 function_list = [Level_Select, Level_One, Level_Two, Level_Three, Ready_Function, Restart_Function, Exit_Function]
 
-button_list = [practise_button]
+button_list = []
 
 menu_button_list = [play_button, exit_button]
 
