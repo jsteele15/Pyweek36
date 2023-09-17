@@ -3,7 +3,7 @@ from events_and_inputs import*
 
 def Start_Menu():
     #tells the game its a menu
-    settings.level_or_menu = 1
+    settings.level_or_menu = 0
     #removes any previous buttons and puts the start buttons in
     button_list.clear()
     for i in menu_button_list:

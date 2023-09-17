@@ -7,6 +7,14 @@ from pygame.locals import*
 from settings import*
 
 
+def Ready_Function():
+    ###a function to start the game, after the pieces have been placed
+    pass
+
+def Restart_Function():
+    ###a function to restart a level if your not liking how its looking
+    pass
+
 ###a practice function to make sure the list reference thing is working
 def printing(button_list):
     print("hello world")
@@ -19,7 +27,7 @@ character_list = [practise_ship]
 
 entity_list = [practise_entity]
 
-function_list = [printing, Level_Select, Level_One, Level_Two, Level_Three]
+function_list = [printing, Level_Select, Level_One, Level_Two, Level_Three, Ready_Function, Restart_Function]
 
 button_list = [practise_button]
 
@@ -27,6 +35,12 @@ menu_button_list = [play_button, exit_button]
 
 menu_level_select_list = [level_1_button, level_2_button, level_3_button]
 
+###the buttons for when youre in the level
+###right now the buttons dont do anything
+on_map_button_list = [ready_button, restart_button]
+
+###the all button list, used to reset the functionality of every button upon going to a new level or menu
+all_button_list = [ready_button, restart_button , level_1_button, level_2_button, level_3_button, play_button, exit_button]
 
 
 ###a function to draw everything to the screen
@@ -35,7 +49,7 @@ def Drawing():
     pos = pygame.mouse.get_pos()
     for i in button_list:
         settings.screen.blit(i.animation_list[i.ind], i.rect)
-        i.Pressed(function_list, button_list, menu_level_select_list, Drawing, Actions)
+        i.Pressed(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list)
     
     if settings.level_or_menu == 1:    
         ###this draws what in the character list, probably best if this works on a timer
