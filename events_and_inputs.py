@@ -15,8 +15,8 @@ def printing(button_list):
 
 ####a list of functions and buttons that act upon each other
 ###we can put all the ships and stuff in this character list and then act upon them
-character_list = []
-entity_list = []
+character_list = [practise_ship]
+entity_list = [practise_entity]
 function_list = [printing]
 button_list = [practise_button]
 
@@ -25,10 +25,22 @@ button_list = [practise_button]
 
 ###a function to draw everything to the screen
 def Drawing(button_list, function_list):
-    
+    pos = pygame.mouse.get_pos()
     for i in button_list:
         settings.screen.blit(i.animation_list[i.ind], i.rect)
         i.Pressed(function_list, button_list)
+    
+    ###this draws what in the character list, probably best if this works on a timer
+    ###that way one ship comes at a time
+    for i in character_list:
+        i.Draw()
+        i.Move()
+        
+    for i in entity_list:
+        i.Draw()
+        i.Move(pos)
+        i.Gravity(character_list)
+
 
 
 ###gets the events like button presses
@@ -50,11 +62,22 @@ def Actions(button_list):
             for i in button_list:
                 if i.rect.collidepoint(pos):
                     i.Clicked_Once = True
+                    
+            for i in entity_list:
+                if i.rect.collidepoint(pos):
+                    i.Clicked = True
+                    print(f"clicked {i.Clicked}")
             
         if event.type == MOUSEBUTTONUP:
             for i in button_list:
                 if i.rect.collidepoint(pos):
                     i.Clicked_Twice = True
+                else:
+                    i.Clicked_Once = False
+                    
+            ###not reseting right now
+            for i in entity_list:
+                i.Clicked = False
     
     ###the actions function goes into every menu loop
     ###the two functions below need to be in every loop

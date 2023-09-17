@@ -9,8 +9,8 @@ class Settings():
     
     #screen
     #height and width are just temp numbers to get the window working
-    HEIGHT = 400
-    WIDTH = 400
+    HEIGHT = 600
+    WIDTH = 600
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     
     #clock

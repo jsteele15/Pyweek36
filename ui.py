@@ -31,3 +31,32 @@ class Buttons(SpriteSheet):
 ###this is just a test to see if this works
 practise_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
 
+
+###actual buttons i think well need, need to remember to change the function reference
+
+###to restart whatever level your on
+restart_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
+
+###when youve finished the set up phase
+play_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
+
+###level one button
+level_1_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
+
+###level two button
+level_2_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
+
+###level three button
+level_3_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
+
+###exit button
+exit_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
+
+#save, load button, idk, stretch goals init
+#save_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
+#load_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
+
+
+
+
+
