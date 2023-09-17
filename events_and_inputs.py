@@ -1,8 +1,11 @@
 import pygame
 import sys
+from characters_and_backgrounds import*
 from ui import*
 from pygame.locals import*
 from settings import*
+
+
 
 ###a practice function to make sure the list reference thing is working
 def printing(button_list):
@@ -11,16 +14,24 @@ def printing(button_list):
         i.Reset()
 
 ####a list of functions and buttons that act upon each other
-
+###we can put all the ships and stuff in this character list and then act upon them
+character_list = []
+entity_list = []
 function_list = [printing]
 button_list = [practise_button]
 
+
+
+
+###a function to draw everything to the screen
 def Drawing(button_list, function_list):
     
     for i in button_list:
         settings.screen.blit(i.animation_list[i.ind], i.rect)
         i.Pressed(function_list, button_list)
 
+
+###gets the events like button presses
 def Actions(button_list):
     pos = pygame.mouse.get_pos()
     
