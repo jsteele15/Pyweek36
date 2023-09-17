@@ -35,7 +35,7 @@ class SpriteSheet:
         
 
 ####an example of how to make an object of the sprite class        
-main_char_im = pygame.image.load(Path(r"../res/Fall_sprite_sheet.png")).convert_alpha()
+###main_char_im = pygame.image.load(Path(r"../res/Fall_sprite_sheet.png")).convert_alpha()
 #main_char = SpriteSheet(main_char_im, 3, 600, 100, 30, 52)  
 
 
