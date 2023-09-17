@@ -18,5 +18,9 @@ class Settings():
     
     #running bool
     Running = True
-        
+    
+    #if its zero its a menu, if its a level its a 1
+    ###could be used to split up the draw into two sections
+    level_or_menu = 0
+    
 settings = Settings()

@@ -15,13 +15,15 @@ class Buttons(SpriteSheet):
         ###squishy?
         super().__init__(image, animation_steps, x_pos, y_pos, x_cut, y_cut)
     
-    def Pressed(self, function_list, *args):
+    def Pressed(self, function_list, button_list, menu_level_select_list, Drawing, Actions):
         ###takes unlimited args to feed into whichever function it uses
         
         ###need to remember that one is the down possition of the button
             
         if self.Clicked_Once == True and self.Clicked_Twice == True:
-            function_list[self.Function_Reference](*args)
+            function_list[self.Function_Reference](button_list, menu_level_select_list, Drawing, Actions)
+                
+        
         
     def Reset(self):
         #a method to reset the functionality of buttons
@@ -38,19 +40,21 @@ practise_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
 restart_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
 
 ###when youve finished the set up phase
-play_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
-
-###level one button
-level_1_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
-
-###level two button
-level_2_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
-
-###level three button
-level_3_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
+play_button = Buttons(1, main_char_im, 3, 100, 100, 30, 52)
 
 ###exit button
-exit_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
+exit_button = Buttons(0, main_char_im, 3, 100, 200, 30, 52)
+
+###level one button
+level_1_button = Buttons(2, main_char_im, 3, 400, 400, 30, 52)
+
+###level two button
+level_2_button = Buttons(3, main_char_im, 3, 500, 500, 30, 52)
+
+###level three button
+level_3_button = Buttons(4, main_char_im, 3, 450, 450, 30, 52)
+
+
 
 #save, load button, idk, stretch goals init
 #save_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)

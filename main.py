@@ -2,21 +2,18 @@ import pygame
 from events_and_inputs import*
 
 def Start_Menu():
+    #tells the game its a menu
+    settings.level_or_menu = 1
+    #removes any previous buttons and puts the start buttons in
+    button_list.clear()
+    for i in menu_button_list:
+        button_list.append(i)
+    
+    print(button_list)
     while settings.Running:
         Drawing()
         Actions(button_list)
-    
-def Level_One():
-    while settings.Running:
-        Actions()
-    
-def Level_Two():
-    while settings.Running:
-        Actions()
-    
-def Level_Three():
-    while settings.Running:
-        Actions()
+
     
 if __name__ == "__main__":
     Start_Menu()

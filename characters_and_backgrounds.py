@@ -61,7 +61,8 @@ class Entity(SpriteSheet):
         ###itll probably have to be ((pos[0] - self.x_pos), pos[1] - self.y_pos) instead of what ive just written
         ###will need to move based on being clicked 
         if self.Clicked == True:
-            self.rect.move_ip(pos[0], pos[1])
+            ##yeah, this doesnt work as intended, it does move though
+            self.rect.move_ip((pos[0]-self.x_pos), (pos[1]-self.y_pos))
         else:
             pass
         
@@ -76,7 +77,7 @@ class Entity(SpriteSheet):
         ##############################this formula definatly doesnt work, i havnt had a chance to test it        
         ##############################i just wrote this as an example, refinment can come later
 
-practise_entity = Entity(main_char_im, 3, 300, 250, 30, 52)
+practise_entity = Entity(main_char_im, 3, 150, 150, 30, 52)
 
 class BackGround(SpriteSheet):
     pass
