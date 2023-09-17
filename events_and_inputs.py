@@ -23,7 +23,7 @@ def printing(button_list):
 
 ####a list of functions and buttons that act upon each other
 ###we can put all the ships and stuff in this character list and then act upon them
-character_list = [practise_ship]
+character_list = [practise_ship, enterprise]
 
 entity_list = [practise_entity]
 
@@ -42,6 +42,11 @@ on_map_button_list = [ready_button, restart_button]
 ###the all button list, used to reset the functionality of every button upon going to a new level or menu
 all_button_list = [ready_button, restart_button , level_1_button, level_2_button, level_3_button, play_button, exit_button]
 
+###a list for all the obstacles
+obstacle_list = [planetx]
+
+
+
 
 ###a function to draw everything to the screen
 def Drawing():
@@ -57,13 +62,16 @@ def Drawing():
         ###this draws what in the character list, probably best if this works on a timer
         ###that way one ship comes at a time
         for i in character_list:
-            i.Draw()
+            i.Draw(obstacle_list, character_list)
             i.Move()
             
         for i in entity_list:
             i.Draw()
             i.Move(pos)
             i.Gravity(character_list)
+            
+        for i in obstacle_list:
+            i.Draw()
 
 
 

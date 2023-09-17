@@ -2,12 +2,16 @@ import pygame
 from spritesheet import*
 
 class Characters(SpriteSheet):
-    def __init__(self, name, move_points ,image, animation_steps, x_pos, y_pos, x_cut, y_cut, health = 100):
+    def __init__(self, direction, name, rotate, move_points ,image, animation_steps, x_pos, y_pos, x_cut, y_cut, health = 100):
+        self.direction = direction
+        
         ###dont need a name really, i just think it would be cool if you could hover over a ship and it gives you a name
         ###maybe we could have a list of generic names in a random list 
         ###and then have a few ships that are "famous" sci fi references
         self.name = name
         
+        ###an initial rotation factor
+        self.rotate = rotate
         ###move_points will be its initial tragectory upon being blited, maybe once it gets to a certain point past the screen
         ###it you lose the option to destroy it
         self.move_points = move_points
@@ -17,11 +21,20 @@ class Characters(SpriteSheet):
 
         super().__init__(image, animation_steps, x_pos, y_pos, x_cut, y_cut)
         
-    def Draw(self):
+    def Draw(self, obstacle_list, character_list):
         ###we should also stop blitting it once it gets off screen to help with performance
         
         ###this changes the rotation of the image, right now it just does it before
-        rotate_im = pygame.transform.rotate(self.animation_list[self.ind], 270)
+        rotate_im = pygame.transform.rotate(self.animation_list[self.ind], self.rotate)
+        for i in obstacle_list:
+            if i.rect.colliderect(self.rect):
+                self.health = 0
+        
+        for i in character_list:
+            if i.rect == self.rect:
+                pass
+            elif i.rect.colliderect(self.rect):
+                self.health = 0
         
         if self.health >= 1:
             settings.screen.blit(rotate_im, self.rect)
@@ -37,16 +50,19 @@ class Characters(SpriteSheet):
         ###not sure how best to do this yet, maybe work out which direction the ship starts at
         ###then decide whether to add or takeaway movment ect
         ###for now im just going to put +move_points
-        if self.health >= 1:
-            self.rect.move_ip(self.move_points, 0)
-            
-        else:
-            pass
+        if self.direction == "left":
+            if self.health >= 1:
+                self.rect.move_ip(self.move_points, 0)
+                
+        if self.direction == "up":
+            if self.health >= 1:
+                self.rect.move_ip(0, -self.move_points)
 
 ####some ships to see whats working 
 ship_temp = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\ship.png").convert_alpha()
-practise_ship = Characters("Star Bug", 1, ship_temp, 1, 200, 200, 50, 50)
+practise_ship = Characters("left", "Star Bug", 270, 1, ship_temp, 1, 200, 200, 50, 50)
 
+enterprise = Characters("up", "Star Bug", 0, 1, ship_temp, 1, 300, 300, 50, 50)
 
 
 
@@ -66,10 +82,14 @@ class Entity(SpriteSheet):
         ###itll probably have to be ((pos[0] - self.x_pos), pos[1] - self.y_pos) instead of what ive just written
         ###will need to move based on being clicked 
         if self.Clicked == True:
+            #self.x_pos = pos[0]
+            #self.y_pos = pos[1]
             ##yeah, this doesnt work as intended, it does move though
             self.rect.move_ip((pos[0]-self.x_pos), (pos[1]-self.y_pos))
+            
         else:
             pass
+           
         
     def Gravity(self, character_list):
         ###figiure out the location of the enitiy and the characters relative to each other
@@ -85,6 +105,18 @@ class Entity(SpriteSheet):
 dm = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\dm.png").convert_alpha()
 practise_entity = Entity(dm, 1, 150, 150, 100, 100)
 
+
+###an obstacles class for ships to collide into
+class Obstacle(SpriteSheet):
+    def __init__(self, image, animation_steps, x_pos, y_pos, x_cut, y_cut):
+        
+        super().__init__(image, animation_steps, x_pos, y_pos, x_cut, y_cut)
+    
+    def Draw(self):
+        settings.screen.blit(self.animation_list[self.ind], self.rect)
+        
+px = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\px.png").convert_alpha()
+planetx = Entity(px, 1, 500, 200, 120, 120)
 
 
 class BackGround(SpriteSheet):

@@ -71,6 +71,11 @@ ready_button = Buttons(5, readb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT
 #load_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
 
 
+class Text():
+    pass
+
+
+
 
 
 
