@@ -11,9 +11,10 @@ def Ready_Function(function_list, button_list, menu_level_select_list, Drawing, 
     ###a function to start the game, after the pieces have been placed
     settings.level_started = True
 
-def Restart_Function():
+def Restart_Function(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
     ###a function to restart a level if your not liking how its looking
-    settings.level_started = False
+    #settings.level_started = False
+    pass
     
     
 def Exit_Function(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
