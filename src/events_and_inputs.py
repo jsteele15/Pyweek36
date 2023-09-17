@@ -7,13 +7,14 @@ from pygame.locals import*
 from settings import*
 
 
-def Ready_Function():
+def Ready_Function(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
     ###a function to start the game, after the pieces have been placed
-    pass
+    settings.level_started = True
 
 def Restart_Function():
     ###a function to restart a level if your not liking how its looking
-    pass
+    settings.level_started = False
+    
     
 def Exit_Function(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
     ###a function that allows you to exit the program, all these arguments i've fed in are pointless
@@ -32,7 +33,7 @@ character_list = [practise_ship, enterprise]
 
 entity_list = [practise_entity]
 
-function_list = [printing, Level_Select, Level_One, Level_Two, Level_Three, Ready_Function, Restart_Function, Exit_Function]
+function_list = [Level_Select, Level_One, Level_Two, Level_Three, Ready_Function, Restart_Function, Exit_Function]
 
 button_list = [practise_button]
 
@@ -68,6 +69,8 @@ def Drawing():
     if settings.level_or_menu == 1:  
         for i in text_list:
             #supposed to be a list of tupples
+            ##proof of concept
+            #not actually drawing right now for some reason
             i.Draw((f"Number of Kills: 0", settings.RED, 500, 500))
             
         ###this draws what in the character list, probably best if this works on a timer

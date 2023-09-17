@@ -38,31 +38,31 @@ practise_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
 
 ###to restart whatever level your on
 rb = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\restart.png").convert_alpha()
-restart_button = Buttons(5, rb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 100), 40, 40)
+restart_button = Buttons(6, rb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 100), 40, 40)
 
 ###when youve finished the set up phase
 pb = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\play_but.png").convert_alpha()
-play_button = Buttons(0, pb, 2, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 200), 100, 40)
+play_button = Buttons(1, pb, 2, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 200), 100, 40)
 
 ###exit button
 eb = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\exit.png").convert_alpha()
-exit_button = Buttons(6, eb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 100), 40, 40)
+exit_button = Buttons(7, eb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 100), 40, 40)
 
 ###level one button
 L1b = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\lv1.png").convert_alpha()
-level_1_button = Buttons(1, L1b, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 200), 100, 40)
+level_1_button = Buttons(2, L1b, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 200), 100, 40)
 
 ###level two button
 L2b = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\lv2.png").convert_alpha()
-level_2_button = Buttons(2, L2b, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 150), 100, 40)
+level_2_button = Buttons(3, L2b, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 150), 100, 40)
 
 ###level three button
 L3b = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\lv3.png").convert_alpha()
-level_3_button = Buttons(3, L3b, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 100), 100, 40)
+level_3_button = Buttons(4, L3b, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 100), 100, 40)
 
 ###ready button, after youve finished setting everything up
 readb = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\ready.png").convert_alpha()
-ready_button = Buttons(4, readb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 200), 40, 40)
+ready_button = Buttons(5, readb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 200), 40, 40)
 
 
 
