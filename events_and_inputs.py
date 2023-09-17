@@ -68,7 +68,7 @@ def Drawing():
     if settings.level_or_menu == 1:  
         for i in text_list:
             #supposed to be a list of tupples
-            i.Draw((f"Number of Kills: {0}", settings.RED, 500, 500))
+            i.Draw((f"Number of Kills: 0", settings.RED, 500, 500))
             
         ###this draws what in the character list, probably best if this works on a timer
         ###that way one ship comes at a time

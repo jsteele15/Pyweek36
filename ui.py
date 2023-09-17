@@ -92,7 +92,7 @@ class Text():
         ###these tuples will contain all the elements needed to blit different aspects of the ui; also maybe a number
         ###at the begining to decide if its going to be a status bar of a simple number text ect
 
-text = Text(20)
+text = Text(200)
 
 ###text.Draw(f"Number of Kills: {0}", settings.RED, 30, 30) example of use
 
