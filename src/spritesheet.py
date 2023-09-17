@@ -1,4 +1,5 @@
 from settings import*
+from pathlib import Path
 
 class SpriteSheet:
     def __init__(self, image, animation_steps, x_pos, y_pos, x_cut, y_cut):
@@ -34,7 +35,7 @@ class SpriteSheet:
         
 
 ####an example of how to make an object of the sprite class        
-main_char_im = pygame.image.load(r"C:\Users\jstee\OneDrive\Desktop\python\ski_game_assets\Fall_sprite_sheet.png").convert_alpha()
+main_char_im = pygame.image.load(Path(r"../res/Fall_sprite_sheet.png")).convert_alpha()
 #main_char = SpriteSheet(main_char_im, 3, 600, 100, 30, 52)  
 
 

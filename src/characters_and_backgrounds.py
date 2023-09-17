@@ -1,4 +1,5 @@
 import pygame
+from pathlib import Path
 from spritesheet import*
 
 class Characters(SpriteSheet):
@@ -59,7 +60,7 @@ class Characters(SpriteSheet):
                 self.rect.move_ip(0, -self.move_points)
 
 ####some ships to see whats working 
-ship_temp = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\ship.png").convert_alpha()
+ship_temp = pygame.image.load(Path(r"../res/ship.png")).convert_alpha()
 practise_ship = Characters("left", "Star Bug", 270, 1, ship_temp, 1, 200, 200, 50, 50)
 
 enterprise = Characters("up", "Star Bug", 0, 1, ship_temp, 1, 300, 300, 50, 50)
@@ -102,7 +103,7 @@ class Entity(SpriteSheet):
         ##############################this formula definatly doesnt work, i havnt had a chance to test it        
         ##############################i just wrote this as an example, refinment can come later
 
-dm = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\dm.png").convert_alpha()
+dm = pygame.image.load(Path(r"../res/dm.png")).convert_alpha()
 practise_entity = Entity(dm, 1, 150, 150, 100, 100)
 
 
@@ -115,7 +116,7 @@ class Obstacle(SpriteSheet):
     def Draw(self):
         settings.screen.blit(self.animation_list[self.ind], self.rect)
         
-px = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\px.png").convert_alpha()
+px = pygame.image.load(Path(r"../res/px.png")).convert_alpha()
 planetx = Entity(px, 1, 500, 200, 120, 120)
 
 
