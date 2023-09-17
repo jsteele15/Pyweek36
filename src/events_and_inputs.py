@@ -14,7 +14,7 @@ def Ready_Function(function_list, button_list, menu_level_select_list, Drawing, 
 def Restart_Function(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
     ###a function to restart a level if your not liking how its looking
     #settings.level_started = False
-    print("this does nothing right now")
+    pass
     
     
 def Exit_Function(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
