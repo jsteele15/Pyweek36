@@ -31,14 +31,12 @@ class Buttons(SpriteSheet):
         self.Clicked_Once = False
         
 
-###this is just a test to see if this works
-practise_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
 
 
 ###actual buttons i think well need, need to remember to change the function reference
 
 ###to restart whatever level your on
-<<<<<<< HEAD
+
 rb = pygame.image.load(Path(r"../res/restart.png")).convert_alpha()
 restart_button = Buttons(6, rb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 100), 40, 40)
 
