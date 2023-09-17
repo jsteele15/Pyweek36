@@ -72,10 +72,24 @@ ready_button = Buttons(5, readb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT
 
 
 class Text():
-    pass
+    def __init__(self, size):
+        self.size = size
+        self.game_font = pygame.font.Font(r'C:\Users\jstee\OneDrive\Desktop\python\cyber_assets\Audiowide-Regular.ttf', self.size)
+    def Draw(self, *tuple_of_elements):
+        #(text, colour, x, y)
+        list_of_tuples = [*tuple_of_elements]
+        
+        lengh_of_line = 0
+        
+        for i in range(len(list_of_tuples)):
+            text_surface = self.game_font.render(list_of_tuples[i][0], False, (list_of_tuples[i][1]))
+            text_rect = text_surface.get_rect(topleft = ((list_of_tuples[i][2]+lengh_of_line*(i)), list_of_tuples[i][3]))
+            lengh_of_line = text_surface.get_width()
+            
+        ###these tuples will contain all the elements needed to blit different aspects of the ui; also maybe a number
+        ###at the begining to decide if its going to be a status bar of a simple number text ect
 
+text = Text(20)
 
-
-
-
+###text.Draw(f"Number of Kills: {0}", settings.RED, 30, 30) example of use
 

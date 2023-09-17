@@ -50,6 +50,8 @@ all_button_list = [ready_button, restart_button , level_1_button, level_2_button
 ###a list for all the obstacles
 obstacle_list = [planetx]
 
+###list of texts
+text_list = [text]
 
 
 
@@ -63,10 +65,13 @@ def Drawing():
         settings.screen.blit(i.animation_list[i.ind], i.rect)
         i.Pressed(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list)
     
-    if settings.level_or_menu == 1:    
+    if settings.level_or_menu == 1:  
+        for i in text_list:
+            i.Draw(f"Number of Kills: {0}", settings.RED, 30, 30)
         ###this draws what in the character list, probably best if this works on a timer
         ###that way one ship comes at a time
         for i in character_list:
+            ####we should put this draw on a timer to allow ships to come out one at a time
             i.Draw(obstacle_list, character_list)
             i.Move()
             

@@ -13,6 +13,7 @@ def Level_Select(function_list, button_list, menu_level_select_list, Drawing, Ac
         Drawing()
         Actions(button_list)
 
+
 def Level_One(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
     settings.level_or_menu = 1
     
@@ -23,6 +24,7 @@ def Level_One(function_list, button_list, menu_level_select_list, Drawing, Actio
     while settings.Running:
         Drawing()
         Actions(button_list)
+
     
 def Level_Two(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
     settings.level_or_menu = 1
@@ -34,7 +36,8 @@ def Level_Two(function_list, button_list, menu_level_select_list, Drawing, Actio
     while settings.Running:
         Drawing()
         Actions(button_list)
-    
+   
+   
 def Level_Three(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
     settings.level_or_menu = 1
     
