@@ -3,7 +3,7 @@ from events_and_inputs import*
 
 def Start_Menu():
     while settings.Running:
-        Drawing(button_list, function_list)
+        Drawing()
         Actions(button_list)
     
 def Level_One():

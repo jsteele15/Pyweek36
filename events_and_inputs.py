@@ -24,7 +24,7 @@ button_list = [practise_button]
 
 
 ###a function to draw everything to the screen
-def Drawing(button_list, function_list):
+def Drawing():
     pos = pygame.mouse.get_pos()
     for i in button_list:
         settings.screen.blit(i.animation_list[i.ind], i.rect)
