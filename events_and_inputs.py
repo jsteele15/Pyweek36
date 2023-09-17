@@ -14,6 +14,11 @@ def Ready_Function():
 def Restart_Function():
     ###a function to restart a level if your not liking how its looking
     pass
+    
+def Exit_Function(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
+    ###a function that allows you to exit the program, all these arguments i've fed in are pointless
+    settings.Running = False
+    sys.exit()
 
 ###a practice function to make sure the list reference thing is working
 def printing(button_list):
@@ -27,7 +32,7 @@ character_list = [practise_ship, enterprise]
 
 entity_list = [practise_entity]
 
-function_list = [printing, Level_Select, Level_One, Level_Two, Level_Three, Ready_Function, Restart_Function]
+function_list = [printing, Level_Select, Level_One, Level_Two, Level_Three, Ready_Function, Restart_Function, Exit_Function]
 
 button_list = [practise_button]
 

@@ -19,18 +19,29 @@ def Level_One(function_list, button_list, menu_level_select_list, Drawing, Actio
     button_list.clear()
     for i in on_map_button_list:
         button_list.append(i)
+        
     while settings.Running:
         Drawing()
         Actions(button_list)
     
-def Level_Two():
+def Level_Two(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
     settings.level_or_menu = 1
+    
+    button_list.clear()
+    for i in on_map_button_list:
+        button_list.append(i)
+        
     while settings.Running:
         Drawing()
         Actions(button_list)
     
-def Level_Three():
+def Level_Three(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
     settings.level_or_menu = 1
+    
+    button_list.clear()
+    for i in on_map_button_list:
+        button_list.append(i)
+        
     while settings.Running:
         Drawing()
         Actions(button_list)

@@ -46,7 +46,7 @@ play_button = Buttons(1, pb, 2, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 2
 
 ###exit button
 eb = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\exit.png").convert_alpha()
-exit_button = Buttons(0, eb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 100), 40, 40)
+exit_button = Buttons(7, eb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 100), 40, 40)
 
 ###level one button
 L1b = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\lv1.png").convert_alpha()
