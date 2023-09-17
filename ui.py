@@ -75,6 +75,7 @@ class Text():
     def __init__(self, size):
         self.size = size
         self.game_font = pygame.font.Font(r'C:\Users\jstee\OneDrive\Desktop\python\cyber_assets\Audiowide-Regular.ttf', self.size)
+        
     def Draw(self, *tuple_of_elements):
         #(text, colour, x, y)
         list_of_tuples = [*tuple_of_elements]
@@ -83,7 +84,9 @@ class Text():
         
         for i in range(len(list_of_tuples)):
             text_surface = self.game_font.render(list_of_tuples[i][0], False, (list_of_tuples[i][1]))
+            
             text_rect = text_surface.get_rect(topleft = ((list_of_tuples[i][2]+lengh_of_line*(i)), list_of_tuples[i][3]))
+            
             lengh_of_line = text_surface.get_width()
             
         ###these tuples will contain all the elements needed to blit different aspects of the ui; also maybe a number
