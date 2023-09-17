@@ -36,10 +36,6 @@ class Buttons(SpriteSheet):
 ###actual buttons i think well need, need to remember to change the function reference
 
 ###to restart whatever level your on
-<<<<<<< HEAD
-=======
-
->>>>>>> 6e56897237737686acfde02ffa353e6f33c8019d
 rb = pygame.image.load(Path(r"../res/restart.png")).convert_alpha()
 restart_button = Buttons(6, rb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 100), 40, 40)
 
