@@ -45,8 +45,10 @@ all_button_list = [ready_button, restart_button , level_1_button, level_2_button
 
 ###a function to draw everything to the screen
 def Drawing():
-    settings.screen.fill(settings.RED)
+    ##temp until weve got an actual background image
+    settings.screen.fill(settings.BLACK)
     pos = pygame.mouse.get_pos()
+    
     for i in button_list:
         settings.screen.blit(i.animation_list[i.ind], i.rect)
         i.Pressed(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list)
@@ -75,7 +77,13 @@ def Actions(button_list):
             sys.exit()
             
         if event.type == KEYDOWN:
-            pass
+            if event.key == K_ESCAPE:
+                settings.Running = False
+                sys.exit()
+                
+            if event.key == K_p:
+                ###sets it to full screen, probably need to be able to undo that
+                settings.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
             
         if event.type == KEYUP:
             pass
@@ -83,6 +91,7 @@ def Actions(button_list):
         if event.type == MOUSEBUTTONDOWN:
             for i in button_list:
                 if i.rect.collidepoint(pos):
+                    
                     i.Clicked_Once = True
                     
             for i in entity_list:

@@ -7,7 +7,7 @@ class SpriteSheet:
         self.animation_steps = animation_steps
         
         ###ind is used to define what image in the animation_list is used
-        self.ind = 1
+        self.ind = 0
         
         ### an x and y pos for setting the location of the rect and stuff
         self.x_pos = x_pos

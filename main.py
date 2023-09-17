@@ -9,7 +9,7 @@ def Start_Menu():
     for i in menu_button_list:
         button_list.append(i)
     
-    print(button_list)
+    print(settings.S_WIDTH)
     while settings.Running:
         Drawing()
         Actions(button_list)

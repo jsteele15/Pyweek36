@@ -19,8 +19,12 @@ class Characters(SpriteSheet):
         
     def Draw(self):
         ###we should also stop blitting it once it gets off screen to help with performance
+        
+        ###this changes the rotation of the image, right now it just does it before
+        rotate_im = pygame.transform.rotate(self.animation_list[self.ind], 270)
+        
         if self.health >= 1:
-            settings.screen.blit(self.animation_list[self.ind], self.rect)
+            settings.screen.blit(rotate_im, self.rect)
             
         else:
             pass
@@ -40,7 +44,8 @@ class Characters(SpriteSheet):
             pass
 
 ####some ships to see whats working 
-practise_ship = Characters("Star Bug", 5, main_char_im, 3, 200, 200, 30, 52)
+ship_temp = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\ship.png").convert_alpha()
+practise_ship = Characters("Star Bug", 1, ship_temp, 1, 200, 200, 50, 50)
 
 
 
@@ -77,7 +82,10 @@ class Entity(SpriteSheet):
         ##############################this formula definatly doesnt work, i havnt had a chance to test it        
         ##############################i just wrote this as an example, refinment can come later
 
-practise_entity = Entity(main_char_im, 3, 150, 150, 30, 52)
+dm = pygame.image.load(r"C:\Users\jstee\OneDrive\Documents\GitHub\Pyweek36\res\dm.png").convert_alpha()
+practise_entity = Entity(dm, 1, 150, 150, 100, 100)
+
+
 
 class BackGround(SpriteSheet):
     pass

@@ -6,12 +6,21 @@ class Settings():
     #colours to use for debugging
     GREEN = (130, 255, 130)
     RED = (255, 0, 0)
+    BLACK = (0, 0, 0)
     
     #screen
     #height and width are just temp numbers to get the window working
     HEIGHT = 600
     WIDTH = 600
+    
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    
+    ###THIS SETS IT TO FULLSCREEN, PROBABLY NEEDS TO BE AN ON OFF THING, BUT I DONT WANT TO DEAL WITH IT RN
+    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    
+    ##to find the relative size of the screen
+    S_WIDTH = pygame.display.get_surface().get_width()
+    S_HEIGHT = pygame.display.get_surface().get_height()
     
     #clock
     clock = pygame.time.Clock()
