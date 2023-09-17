@@ -24,7 +24,7 @@ class Characters(SpriteSheet):
         
     def Draw(self, obstacle_list, character_list):
         ###we should also stop blitting it once it gets off screen to help with performance
-        
+        #if settings.level_started == True:
         ###this changes the rotation of the image, right now it just does it before
         rotate_im = pygame.transform.rotate(self.animation_list[self.ind], self.rotate)
         for i in obstacle_list:

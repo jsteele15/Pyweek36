@@ -32,4 +32,8 @@ class Settings():
     ###could be used to split up the draw into two sections
     level_or_menu = 0
     
+    ###to go into the levels to determin if its the setup stage or not
+    #level_started = False
+    
+    
 settings = Settings()
