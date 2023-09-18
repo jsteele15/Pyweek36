@@ -55,13 +55,13 @@ obstacle_list = [planetx]
 
 ###list of texts
 text_list = [text]
-space = pygame.image.load(Path(r"../res/testsky.png")).convert_alpha()
+
 ###a function to draw everything to the screen
 def Drawing():
     ##temp until weve got an actual background image
     settings.screen.fill(settings.BLACK)
     pos = pygame.mouse.get_pos()
-    settings.screen.blit(space, (1000, 500))
+    
     for i in button_list:
         settings.screen.blit(i.animation_list[i.ind], i.rect)
         i.Pressed(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list)
