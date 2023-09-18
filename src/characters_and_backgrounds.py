@@ -73,7 +73,7 @@ class Ent:
         self.angle = calc_angle(self.vel.x, self.vel.y)
 
 class Ship(Ent):
-    def __init__(self, pos: Vec2, vel: Vec2, angle: int = 0, thrust = Vec2(0,0), can_move = True):
+    def __init__(self, pos: Vec2, vel: Vec2= Vec2(0,0), angle: int = 0, thrust = Vec2(0,0), can_move = True):
         self.image_path = "../res/ship.png"
         size = Vec2(50,50)
         self.mass = 1
@@ -96,11 +96,9 @@ class Ship(Ent):
         
         self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y)
 
-
-
 class PlanetL(Ent):
-    def __init__(self, pos: Vec2, vel: Vec2, angle: int = 0, thrust = Vec2(0,0), can_move = True):
-        self.image_path = "../res/px.png"
+    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), angle: int = 0, thrust = Vec2(0,0), can_move = True):
+        self.image_path = "../res/large_planet_ss.png"
         size = Vec2(150,150)
         self.mass = 20000000
         self.can_move = False
@@ -124,10 +122,10 @@ class PlanetL(Ent):
 
 
 class PlanetM(Ent):
-    def __init__(self, pos: Vec2, vel: Vec2, angle: int = 0, thrust = Vec2(0,0), can_move = True):
-        self.image_path = "../res/px.png"
+    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), angle: int = 0, thrust = Vec2(0,0), can_move = True):
+        self.image_path = "../res/medium_planet_ss.png"
         size = Vec2(100,100)
-        self.mass = 1000000
+        self.mass = 7000000
         self.can_move = False
         self.is_alive = True
         animation_steps = 6
@@ -149,10 +147,10 @@ class PlanetM(Ent):
 
 
 class PlanetS(Ent):
-    def __init__(self, pos: Vec2, vel: Vec2, angle: int = 0, thrust = Vec2(0,0), can_move = True):
-        self.image_path = "../res/px.png"
-        size = Vec2(100,100)
-        self.mass = 200000
+    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), angle: int = 0, thrust = Vec2(0,0), can_move = True):
+        self.image_path = "../res/small_planet_ss.png"
+        size = Vec2(50,50)
+        self.mass = 00000
         self.can_move = False
         self.is_alive = True
         animation_steps = 6

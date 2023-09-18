@@ -20,9 +20,9 @@ def main():
     pygame.init()
     settings = Settings()
     ent_list = []
-    testent = Ship(Vec2(50, 50), Vec2(5, 10))
-    testent2 = PlanetL(Vec2(350, 200), Vec2(0, 0))
-    testent3 = Ent("../res/ship.png", Vec2(50, 50), Vec2(100, 350), Vec2(0, 0), 20000000, can_move = False) 
+    testent = Ship(Vec2(50, 50), thrust = Vec2(.2, 0))
+    testent2 = PlanetM(Vec2(400, 400))
+    testent3 = PlanetM(Vec2(100, 350)) 
     ent_list.append(testent)
     ent_list.append(testent2)
     ent_list.append(testent3)
@@ -30,7 +30,8 @@ def main():
 
     while settings.Running:
         screen.fill((0,0,0))
-        move_ents(ent_list)
+        if settings.PAUSED == False:
+            move_ents(ent_list)
         draw_ents(ent_list, screen)
 
         pygame.display.update()

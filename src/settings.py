@@ -11,7 +11,9 @@ class Settings():
     #screen
     #height and width are just temp numbers to get the window working
     HEIGHT = 600
-    WIDTH = 600
+    WIDTH = 800
+
+    PAUSED = True
     
     if __name__ == "__main__": #temporary before I can remove the settings =Settings() below without breaking everything
         screen = pygame.display.set_mode((WIDTH, HEIGHT))
