@@ -20,9 +20,9 @@ def main():
     pygame.init()
     settings = Settings()
     ent_list = []
-    testent = Ent("../res/ship.png", Vec2(50, 50), Vec2(50, 50), Vec2(0, 0), 1)
-    testent2 = Ent("../res/ship.png", Vec2(50, 50), Vec2(350, 300), Vec2(0, 0), 10000000)
-    testent3 = Ent("../res/ship.png", Vec2(50, 50), Vec2(500, 590), Vec2(0, 0), 1.5, thrust = Vec2(0, -3)) 
+    testent = Ent("../res/ship.png", Vec2(50, 50), Vec2(50, 50), Vec2(0, 0), 1, thrust = Vec2(0, -0.5))
+    testent2 = Ent("../res/ship.png", Vec2(50, 50), Vec2(350, 200), Vec2(0, 0), 20000000)
+    testent3 = Ent("../res/ship.png", Vec2(50, 50), Vec2(500, 590), Vec2(0, 0), 5, thrust = Vec2(0, -7)) 
     ent_list.append(testent)
     ent_list.append(testent2)
     ent_list.append(testent3)

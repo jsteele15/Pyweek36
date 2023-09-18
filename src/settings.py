@@ -62,5 +62,5 @@ class Vec2:
         else:
             return Vec2(self.x/o, self.y/o)
         
-G_Const = 0.0001 #constant to multipy gravity. Increasing makes grav stronger and vice versa
+G_Const = 0.00001 #constant to multipy gravity. Increasing makes grav stronger and vice versa
 

@@ -35,8 +35,8 @@ class Ent:
     def move(self, ent_list):
         if self.can_move == False:
             return
-        self.vel.x = 0
-        self.vel.y = 0
+        #self.vel.x = 0
+        #self.vel.y = 0
 
         for ent in ent_list:
             if self.ID != ent.ID:
@@ -50,17 +50,15 @@ class Ent:
                     self.vel.x -= dist_x*grav
                     self.vel.y -= dist_y*grav
                     #adds all gravitational pulls for objects together before moving
-
-                    
-
-                    self.vel.x /= self.mass #More massive objects require more force to move quickly
-                    self.vel.y /= self.mass
                 
                     if self.hitbox.colliderect(ent.hitbox): #collision check
                         self.is_alive = False
                         ent.is_alive = False
 
         self.vel += self.thrust
+
+        self.vel.x /= self.mass #More massive objects require more force to move quickly
+        self.vel.y /= self.mass
         
         self.pos.x += self.vel.x
         self.pos.y += self.vel.y
