@@ -56,7 +56,6 @@ obstacle_list = [planetx]
 text_list = [text]
 
 
-
 ###a function to draw everything to the screen
 def Drawing():
     ##temp until weve got an actual background image
