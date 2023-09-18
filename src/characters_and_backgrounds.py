@@ -101,12 +101,62 @@ class Ship(Ent):
 class PlanetL(Ent):
     def __init__(self, pos: Vec2, vel: Vec2, angle: int = 0, thrust = Vec2(0,0), can_move = True):
         self.image_path = "../res/px.png"
-        size = Vec2(120,120)
+        size = Vec2(150,150)
         self.mass = 20000000
         self.can_move = False
         self.is_alive = True
-        animation_steps = 1
+        animation_steps = 6
         self.hitoff = Vec2(10, 10)
+
+        self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
+        self.hitbox = pygame.Rect(pos.x+self.hitoff.x, pos.y+self.hitoff.y, size.x - self.hitoff.x*2, size.y - self.hitoff.y*2)
+        self.pos = pos
+        self.vel = vel
+        
+        self.angle = angle
+        self.prev_angle = angle
+        self.thrust = thrust
+        
+        self.ID = Ent.ent_count
+        Ent.ent_count += 1
+        
+        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y)
+
+
+class PlanetM(Ent):
+    def __init__(self, pos: Vec2, vel: Vec2, angle: int = 0, thrust = Vec2(0,0), can_move = True):
+        self.image_path = "../res/px.png"
+        size = Vec2(100,100)
+        self.mass = 1000000
+        self.can_move = False
+        self.is_alive = True
+        animation_steps = 6
+        self.hitoff = Vec2(7, 7)
+
+        self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
+        self.hitbox = pygame.Rect(pos.x+self.hitoff.x, pos.y+self.hitoff.y, size.x - self.hitoff.x*2, size.y - self.hitoff.y*2)
+        self.pos = pos
+        self.vel = vel
+        
+        self.angle = angle
+        self.prev_angle = angle
+        self.thrust = thrust
+        
+        self.ID = Ent.ent_count
+        Ent.ent_count += 1
+        
+        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y)
+
+
+class PlanetS(Ent):
+    def __init__(self, pos: Vec2, vel: Vec2, angle: int = 0, thrust = Vec2(0,0), can_move = True):
+        self.image_path = "../res/px.png"
+        size = Vec2(100,100)
+        self.mass = 200000
+        self.can_move = False
+        self.is_alive = True
+        animation_steps = 6
+        self.hitoff = Vec2(5, 5)
 
         self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
         self.hitbox = pygame.Rect(pos.x+self.hitoff.x, pos.y+self.hitoff.y, size.x - self.hitoff.x*2, size.y - self.hitoff.y*2)
