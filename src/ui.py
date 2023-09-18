@@ -34,7 +34,7 @@ class Buttons(SpriteSheet):
 
 
 ###actual buttons i think well need, need to remember to change the function reference
-
+"""
 ###to restart whatever level your on
 rb = pygame.image.load(Path(r"../res/restart.png")).convert_alpha()
 restart_button = Buttons(6, rb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 100), 40, 40)
@@ -69,7 +69,7 @@ ready_button = Buttons(5, readb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT
 #save_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
 #load_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
 
-
+"""
 class Text():
     def __init__(self, size):
         self.size = size

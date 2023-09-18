@@ -1,6 +1,93 @@
 import pygame
 from pathlib import Path
-from spritesheet import*
+from spritesheet import SpriteSheet
+from settings import Vec2, G_Const
+from math import sqrt, atan, degrees
+
+class Ent:
+    ent_count = 0
+    def __init__(self, image_path: str,  size: Vec2, 
+                 pos: Vec2, vel: Vec2, mass:int , angle: int = 0, thrust = Vec2(0,0), can_move = True, animation_steps: int = 1):
+        self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
+        self.pos = pos
+        self.angle = angle
+        self.prev_angle = angle
+        self.vel = vel
+        self.mass = mass
+        self.is_alive = True
+        self.thrust = thrust
+        self.can_move = can_move
+
+        self.ID = Ent.ent_count
+        Ent.ent_count += 1
+        
+        self.sprites = SpriteSheet(pygame.image.load(Path(image_path)), animation_steps, pos.x, pos.y, size.x, size.y)
+    
+    def draw(self, screen):
+        if self.angle != self.prev_angle:
+            pygame.transform.rotate(self.sprites.animation_list[self.sprites.ind], self.angle-self.prev_angle)
+        screen.blit(self.sprites.animation_list[self.sprites.ind], self.rect)
+
+    def move(self, ent_list):
+        if self.can_move == False:
+            return
+        self.vel.x = 0
+        self.vel.y = 0
+
+        for ent in ent_list:
+            if self.ID != ent.ID:
+                dist_x = self.pos.x - ent.pos.x
+                dist_y = self.pos.y - ent.pos.y
+                dist = sqrt(dist_x*dist_x + dist_y*dist_y) #Pythagorean theorem to calculate direct distance
+
+                grav = calc_gravity(self.mass, ent.mass, dist) #calculates gravity based upon masses and distance
+
+                self.vel.x -= dist_x*grav
+                self.vel.y -= dist_y*grav
+                #adds all gravitational pulls for objects together before moving
+
+                self.vel += self.thrust
+
+                self.vel.x /= self.mass #More massive objects require more force to move quickly
+                self.vel.y /= self.mass
+
+        self.pos.x += self.vel.x
+        self.pos.y += self.vel.y
+
+        self.rect.x = self.pos.x
+        self.rect.y = self.pos.y
+        print(f"ID:{self.ID}, X: {self.pos.x}, Y: {self.pos.y}")
+
+        self.prev_angle = self.angle
+        self.angle = calc_angle(self.vel.x, self.vel.y)
+        
+def calc_gravity(m1: int, m2: int, dist: Vec2):
+    #standard gravity equation. Google it
+    if dist == 0:
+        return 0
+    return (G_Const*m1*m2)/(dist*dist) 
+
+def calc_angle(x, y):
+    ### Using trigonometry to calculate new angle (sohcahTOA). See notebook for diagram
+    #Must split into quadrants so we get angles correct, else would always rbe < 90
+    if x >= 0 and y >= 0:
+        if y == 0:
+            return 0
+        return degrees(atan(x/y))
+    elif x >= 0 and y < 0:
+        if x == 0:
+            return 90
+        return degrees(atan(abs(y)/x)) + 90
+    elif x < 0 and y <=0:
+        if y == 0:
+            return 180
+        return degrees(atan(abs(x)/abs(y))) + 180
+    elif x <= 0 and y >= 0:
+        if x == 0:
+            return 270
+        return degrees(atan(y/abs(x))) + 270
+
+
 
 class Characters(SpriteSheet):
     def __init__(self, direction, name, rotate, move_points ,image, animation_steps, x_pos, y_pos, x_cut, y_cut, health = 100):
@@ -60,10 +147,10 @@ class Characters(SpriteSheet):
                 self.rect.move_ip(0, -self.move_points)
 
 ####some ships to see whats working 
-ship_temp = pygame.image.load(Path(r"../res/ship.png")).convert_alpha()
-practise_ship = Characters("left", "Star Bug", 270, 1, ship_temp, 1, 200, 200, 50, 50)
+# ship_temp = pygame.image.load(Path(r"../res/ship.png")).convert_alpha()
+#practise_ship = Characters("left", "Star Bug", 270, 1, ship_temp, 1, 200, 200, 50, 50)
 
-enterprise = Characters("up", "Star Bug", 0, 1, ship_temp, 1, 300, 300, 50, 50)
+#enterprise = Characters("up", "Star Bug", 0, 1, ship_temp, 1, 300, 300, 50, 50)
 
 
 
@@ -103,8 +190,8 @@ class Entity(SpriteSheet):
         ##############################this formula definatly doesnt work, i havnt had a chance to test it        
         ##############################i just wrote this as an example, refinment can come later
 
-dm = pygame.image.load(Path(r"../res/dm.png")).convert_alpha()
-practise_entity = Entity(dm, 1, 150, 150, 100, 100)
+#dm = pygame.image.load(Path(r"../res/dm.png")).convert_alpha()
+#practise_entity = Entity(dm, 1, 150, 150, 100, 100)
 
 
 ###an obstacles class for ships to collide into
@@ -112,12 +199,12 @@ class Obstacle(SpriteSheet):
     def __init__(self, image, animation_steps, x_pos, y_pos, x_cut, y_cut):
         
         super().__init__(image, animation_steps, x_pos, y_pos, x_cut, y_cut)
-    
+        
     def Draw(self):
         settings.screen.blit(self.animation_list[self.ind], self.rect)
         
-px = pygame.image.load(Path(r"../res/px.png")).convert_alpha()
-planetx = Entity(px, 1, 500, 200, 120, 120)
+#px = pygame.image.load(Path(r"../res/px.png")).convert_alpha()
+#planetx = Entity(px, 1, 500, 200, 120, 120)
 
 
 class BackGround(SpriteSheet):

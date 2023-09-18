@@ -10,10 +10,6 @@ class SpriteSheet:
         ###ind is used to define what image in the animation_list is used
         self.ind = 0
         
-        ### an x and y pos for setting the location of the rect and stuff
-        self.x_pos = x_pos
-        self.y_pos = y_pos
-        
         ###this defines the size of the smaller sub image to be cut out of the picture
         self.x_cut = x_cut
         self.y_cut = y_cut
@@ -24,8 +20,6 @@ class SpriteSheet:
         for x in range(self.animation_steps):
             self.animation_list.append(self.get_image(x, self.x_cut, self.y_cut, BLACK_GRE))
             
-        for i in self.animation_list:
-            self.rect = i.get_rect(topleft = (self.x_pos, self.y_pos))
             
     def get_image(self, frame, width, height, colour):
         image = pygame.Surface((width, height))
