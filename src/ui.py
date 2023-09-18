@@ -4,26 +4,29 @@ from settings import*
 from pathlib import Path
 
 class Buttons(SpriteSheet):
-    def __init__(self, Function_Reference, image, animation_steps, x_pos, y_pos, x_cut, y_cut, Clicked_Once = False, Clicked_Twice = False):
+    def __init__(self, Function_Reference, image_path: str, pos: Vec2):
         ###we can give the button an int 0, 1, 2 ect. The use that later when it gets pressed
         ###to call methods from a list
         
         self.Function_Reference = Function_Reference
         self.Clicked_Once = False
         self.Clicked_Twice = False
+        self.rect = pygame.Rect(pos.x, pos.y, 100, 40)
         
         ###this button class inherits from sprites sheet, this will allow us to make the buttons
         ###squishy?
-        super().__init__(image, animation_steps, x_pos, y_pos, x_cut, y_cut)
-    
-    def Pressed(self, function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
-        ###takes unlimited args to feed into whichever function it uses
-        
+        super().__init__(pygame.image.load(Path(image_path)), 2, pos.x, pos.y, 100, 40)
+
+     
+    def pressed(self, func_list, settings):        
         ###need to remember that one is the down possition of the button
             
         if self.Clicked_Once == True and self.Clicked_Twice == True:
-            function_list[self.Function_Reference](function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list )
+            func_list[self.Function_Reference](settings)
                 
+
+    def draw(self, screen):
+        screen.blit(self.animation_list[self.ind], self.rect)
         
         
     def Reset(self):
