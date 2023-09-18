@@ -20,9 +20,9 @@ def main():
     pygame.init()
     settings = Settings()
     ent_list = []
-    testent = Ship(Vec2(50, 50), thrust = Vec2(.2, 0))
-    testent2 = PlanetM(Vec2(400, 400))
-    testent3 = PlanetM(Vec2(100, 350)) 
+    testent = Ship(Vec2(50, 50), thrust = Vec2(1, 0))
+    testent2 = DarkMatter(Vec2(400, 400))
+    testent3 = PlanetL(Vec2(100, 350)) 
     ent_list.append(testent)
     ent_list.append(testent2)
     ent_list.append(testent3)

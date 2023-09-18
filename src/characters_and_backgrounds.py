@@ -170,6 +170,30 @@ class PlanetS(Ent):
         
         self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y)
 
+
+class DarkMatter(Ent):
+    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), angle: int = 0):
+        self.image_path = "../res/dark_matter.png"
+        size = Vec2(50,50)
+        self.mass = 1000000
+        self.can_move = False
+        self.is_alive = True
+        animation_steps = 1
+        self.hitoff = Vec2(5, 5)
+
+        self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
+        self.hitbox = pygame.Rect(pos.x+self.hitoff.x, pos.y+self.hitoff.y, size.x - self.hitoff.x*2, size.y - self.hitoff.y*2)
+        self.pos = pos
+        self.vel = vel
+        
+        self.angle = angle
+        self.prev_angle = angle
+        
+        self.ID = Ent.ent_count
+        Ent.ent_count += 1
+        
+        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y)
+
        
 
         
