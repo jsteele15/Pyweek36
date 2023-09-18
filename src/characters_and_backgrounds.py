@@ -7,9 +7,10 @@ from math import sqrt, atan, degrees
 class Ent:
     ent_count = 0
     def __init__(self, image_path: str,  size: Vec2, 
-                 pos: Vec2, vel: Vec2, mass:int , angle: int = 0, thrust = Vec2(0,0), can_move = True, animation_steps: int = 1):
+                 pos: Vec2, vel: Vec2, mass:int , angle: int = 0, thrust = Vec2(0,0), hitoff = Vec2(1,1), can_move = True, animation_steps: int = 1):
         self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
-        self.hitbox = pygame.Rect(pos.x+2, pos.y+2, size.x - 4, size.y - 4)
+        self.hitoff = hitoff
+        self.hitbox = pygame.Rect(pos.x+hitoff.x, pos.y+hitoff.y, size.x - hitoff.x*2, size.y - hitoff.y*2)
         self.pos = pos
         self.angle = angle
         self.prev_angle = angle
@@ -35,9 +36,10 @@ class Ent:
     def move(self, ent_list):
         if self.can_move == False:
             return
-        self.vel.x = 0
-        self.vel.y = 0
-
+        #self.vel.x = 0
+        #self.vel.y = 0
+        
+        
         for ent in ent_list:
             if self.ID != ent.ID:
                 if self.is_alive and ent.is_alive:
@@ -50,29 +52,78 @@ class Ent:
                     self.vel.x -= dist_x*grav
                     self.vel.y -= dist_y*grav
                     #adds all gravitational pulls for objects together before moving
-
-                    
-
-                    self.vel.x /= self.mass #More massive objects require more force to move quickly
-                    self.vel.y /= self.mass
                 
                     if self.hitbox.colliderect(ent.hitbox): #collision check
                         self.is_alive = False
                         ent.is_alive = False
 
         self.vel += self.thrust
+        self.vel.x /= self.mass #More massive objects require more force to move quickly
+        self.vel.y /= self.mass
         
         self.pos.x += self.vel.x
         self.pos.y += self.vel.y
 
         self.rect.x = self.pos.x
         self.rect.y = self.pos.y
-        self.hitbox.x = self.rect.x + 2 #Move hitbox to overlap image. Offset because it's smaller than image
-        self.hitbox.y = self.rect.y + 2
-        print(f"ID:{self.ID}, X: {self.pos.x}, Y: {self.pos.y}")
+        self.hitbox.x = self.pos.x + self.hitoff.x #Move hitbox to overlap image. Offset because it's smaller than image
+        self.hitbox.y = self.pos.y + self.hitoff.y
 
         self.prev_angle = self.angle
         self.angle = calc_angle(self.vel.x, self.vel.y)
+
+class Ship(Ent):
+    def __init__(self, pos: Vec2, vel: Vec2, angle: int = 0, thrust = Vec2(0,0), can_move = True):
+        self.image_path = "../res/ship.png"
+        size = Vec2(50,50)
+        self.mass = 1
+        self.can_move = True
+        self.is_alive = True
+        animation_steps = 1
+        self.hitoff = Vec2(2, 6)
+
+        self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
+        self.hitbox = pygame.Rect(pos.x+self.hitoff.x, pos.y+self.hitoff.y, size.x - self.hitoff.x*2, size.y - self.hitoff.y*2)
+        self.pos = pos
+        self.vel = vel
+        
+        self.angle = angle
+        self.prev_angle = angle
+        self.thrust = thrust
+        
+        self.ID = Ent.ent_count
+        Ent.ent_count += 1
+        
+        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y)
+
+
+
+class PlanetL(Ent):
+    def __init__(self, pos: Vec2, vel: Vec2, angle: int = 0, thrust = Vec2(0,0), can_move = True):
+        self.image_path = "../res/px.png"
+        size = Vec2(120,120)
+        self.mass = 20000000
+        self.can_move = False
+        self.is_alive = True
+        animation_steps = 1
+        self.hitoff = Vec2(10, 10)
+
+        self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
+        self.hitbox = pygame.Rect(pos.x+self.hitoff.x, pos.y+self.hitoff.y, size.x - self.hitoff.x*2, size.y - self.hitoff.y*2)
+        self.pos = pos
+        self.vel = vel
+        
+        self.angle = angle
+        self.prev_angle = angle
+        self.thrust = thrust
+        
+        self.ID = Ent.ent_count
+        Ent.ent_count += 1
+        
+        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y)
+
+       
+
         
 def calc_gravity(m1: int, m2: int, dist: Vec2):
     #standard gravity equation. Google it
