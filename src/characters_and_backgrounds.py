@@ -9,6 +9,7 @@ class Ent:
     def __init__(self, image_path: str,  size: Vec2, 
                  pos: Vec2, vel: Vec2, mass:int , angle: int = 0, thrust = Vec2(0,0), can_move = True, animation_steps: int = 1):
         self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
+        self.hitbox = pygame.Rect(pos.x+2, pos.y+2, size.x - 4, size.y - 4)
         self.pos = pos
         self.angle = angle
         self.prev_angle = angle
@@ -26,7 +27,10 @@ class Ent:
     def draw(self, screen):
         if self.angle != self.prev_angle:
             pygame.transform.rotate(self.sprites.animation_list[self.sprites.ind], self.angle-self.prev_angle)
-        screen.blit(self.sprites.animation_list[self.sprites.ind], self.rect)
+        
+        pygame.draw.rect(screen, (255, 0, 0), self.hitbox)
+        if self.is_alive: #draw only if not collided
+            screen.blit(self.sprites.animation_list[self.sprites.ind], self.rect)
 
     def move(self, ent_list):
         if self.can_move == False:
@@ -36,26 +40,35 @@ class Ent:
 
         for ent in ent_list:
             if self.ID != ent.ID:
-                dist_x = self.pos.x - ent.pos.x
-                dist_y = self.pos.y - ent.pos.y
-                dist = sqrt(dist_x*dist_x + dist_y*dist_y) #Pythagorean theorem to calculate direct distance
+                if self.is_alive and ent.is_alive:
+                    dist_x = self.pos.x - ent.pos.x
+                    dist_y = self.pos.y - ent.pos.y
+                    dist = sqrt(dist_x*dist_x + dist_y*dist_y) #Pythagorean theorem to calculate direct distance
 
-                grav = calc_gravity(self.mass, ent.mass, dist) #calculates gravity based upon masses and distance
+                    grav = calc_gravity(self.mass, ent.mass, dist) #calculates gravity based upon masses and distance
 
-                self.vel.x -= dist_x*grav
-                self.vel.y -= dist_y*grav
-                #adds all gravitational pulls for objects together before moving
+                    self.vel.x -= dist_x*grav
+                    self.vel.y -= dist_y*grav
+                    #adds all gravitational pulls for objects together before moving
 
-                self.vel += self.thrust
+                    
 
-                self.vel.x /= self.mass #More massive objects require more force to move quickly
-                self.vel.y /= self.mass
+                    self.vel.x /= self.mass #More massive objects require more force to move quickly
+                    self.vel.y /= self.mass
+                
+                    if self.hitbox.colliderect(ent.hitbox): #collision check
+                        self.is_alive = False
+                        ent.is_alive = False
 
+        self.vel += self.thrust
+        
         self.pos.x += self.vel.x
         self.pos.y += self.vel.y
 
         self.rect.x = self.pos.x
         self.rect.y = self.pos.y
+        self.hitbox.x = self.rect.x + 2 #Move hitbox to overlap image. Offset because it's smaller than image
+        self.hitbox.y = self.rect.y + 2
         print(f"ID:{self.ID}, X: {self.pos.x}, Y: {self.pos.y}")
 
         self.prev_angle = self.angle

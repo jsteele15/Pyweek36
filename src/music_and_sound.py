@@ -1,8 +1,7 @@
 import pygame
 from pathlib import Path
-from pygame import mixer
-
-mixer.init()
+"""
+pygame.mixer.init()
 
 class Music_Sound:
     def __init__(self, tag, file_loc):
@@ -21,7 +20,7 @@ class Music_Sound:
     def Load(self):
         ###need to load a track first before playing it
         pygame.mixer.music.load(self.file_loc)
-
+"""
 
 #track = Music_Sound("./res/tracklist_1.wav") ##an example of how this will work 
 #track.Load() this is to load what ever track has been made

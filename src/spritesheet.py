@@ -30,7 +30,7 @@ class SpriteSheet:
 
 ####an example of how to make an object of the sprite class        
 #main_char = SpriteSheet(main_char_im, 3, 600, 100, 30, 52)  
-exp_im = pygame.image.load(Path(r"../res/explosion.png")).convert_alpha()
+#exp_im = pygame.image.load(Path(r"../res/explosion.png")).convert_alpha()
 
 
 #change the ind to change what happens

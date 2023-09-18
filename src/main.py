@@ -14,19 +14,15 @@ def Start_Menu():
     while settings.Running:
         Drawing()
         Actions(button_list)
-<<<<<<< HEAD
-        
-    
-=======
 
 
 def main():
     pygame.init()
     settings = Settings()
     ent_list = []
-    testent = Ent("../res/ship.png", Vec2(50, 50), Vec2(50, 50), Vec2(0, 0), 0.1)
-    testent2 = Ent("../res/ship.png", Vec2(50, 50), Vec2(350, 300), Vec2(0, 0), 1000000)
-    testent3 = Ent("../res/ship.png", Vec2(50, 50), Vec2(500, 590), Vec2(0, 0), 1.5, thrust = Vec2(0, -2)) 
+    testent = Ent("../res/ship.png", Vec2(50, 50), Vec2(50, 50), Vec2(0, 0), 1)
+    testent2 = Ent("../res/ship.png", Vec2(50, 50), Vec2(350, 300), Vec2(0, 0), 10000000)
+    testent3 = Ent("../res/ship.png", Vec2(50, 50), Vec2(500, 590), Vec2(0, 0), 1.5, thrust = Vec2(0, -3)) 
     ent_list.append(testent)
     ent_list.append(testent2)
     ent_list.append(testent3)
@@ -53,7 +49,6 @@ def move_ents(ent_list):
     for ent in ent_list:
         ent.move(ent_list)
 
->>>>>>> merge_char_ent_classes
 if __name__ == "__main__":
     #Start_Menu()
     main()
