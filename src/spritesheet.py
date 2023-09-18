@@ -36,7 +36,27 @@ class SpriteSheet:
 
 ####an example of how to make an object of the sprite class        
 #main_char = SpriteSheet(main_char_im, 3, 600, 100, 30, 52)  
+exp_im = pygame.image.load(Path(r"../res/explosion.png")).convert_alpha()
 
 
 #change the ind to change what happens
 #settings.screen.blit(self.animation_list[self.ind], self.rect) 
+
+
+
+################################################################################################
+### i popped the first bit in here in the spritesheet for characters,
+###so that it blows up on the spot of the crash
+"""
+explosion_sprite = SpriteSheet(exp_im, 114, x_pos, y_pos, 100, 100)
+exp_list = [explosion_sprite]
+
+
+if i.health <= 0:
+    for e in i.exp_list:
+        if e.ind <=112:
+            i.explosion_sprite.ind += 1
+            settings.screen.blit(e.animation_list[int(e.ind)], e.rect)
+
+"""    
+###the second bit i put in the draw method to activate when a ship loses its health            

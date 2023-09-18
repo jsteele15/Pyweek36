@@ -1,5 +1,5 @@
 import pygame
-
+from music_and_sound import*
 pygame.init()
 
 class Settings():

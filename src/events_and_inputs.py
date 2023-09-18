@@ -1,5 +1,6 @@
 import pygame
 import sys
+from pathlib import Path
 from levels import*
 from characters_and_backgrounds import*
 from ui import*
@@ -54,8 +55,6 @@ obstacle_list = [planetx]
 
 ###list of texts
 text_list = [text]
-
-
 
 ###a function to draw everything to the screen
 def Drawing():

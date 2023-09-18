@@ -19,8 +19,11 @@ class Characters(SpriteSheet):
         
         ###health of ships and meteors, we can have a destruction animation when it falls to zero
         self.health = health
-
+        
         super().__init__(image, animation_steps, x_pos, y_pos, x_cut, y_cut)
+        
+        self.explosion_sprite = SpriteSheet(exp_im, 114, self.x_pos, self.y_pos, 100, 100)
+        self.exp_list = [self.explosion_sprite]
         
     def Draw(self, obstacle_list, character_list):
         ###we should also stop blitting it once it gets off screen to help with performance
