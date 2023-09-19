@@ -1,6 +1,7 @@
 import pygame
 from music_and_sound import*
 from spritesheet import SpriteSheet
+from copy import copy
 pygame.init()
 
 
@@ -52,6 +53,11 @@ class Settings():
 
     PAUSED = True
     started = False
+
+    level_list = []
+    current_level = 0
+    ent_list = []
+    button_list = []
     
     if __name__ == "__main__": #temporary before I can remove the settings =Settings() below without breaking everything
         screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -81,6 +87,9 @@ class Settings():
     ###to go into the levels to determin if its the setup stage or not
     #level_started = False
 
+    def load_level(self):
+        self.ent_list = self.level_list[self.current_level].ent_list.copy()
+        self.button_list = self.level_list[self.current_level].button_list.copy()
         
 G_Const = 0.00001 #constant to multipy gravity. Increasing makes grav stronger and vice versa
 

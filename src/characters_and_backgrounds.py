@@ -27,7 +27,8 @@ class Ent:
     
     def draw(self, screen):
         if self.angle != self.prev_angle:
-            pygame.transform.rotate(self.sprites.animation_list[self.sprites.ind], self.angle-self.prev_angle)
+            print(self.angle)
+            pygame.transform.rotate(self.sprites.animation_list[self.sprites.ind], self.angle)
         
         #pygame.draw.rect(screen, (255, 0, 0), self.hitbox) #draw hitbox
         if self.is_alive: #draw only if not collided

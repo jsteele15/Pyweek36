@@ -1,6 +1,11 @@
 import pygame
 from settings import*
 
+class Level:
+    def __init__(self, button_list, ent_list) -> None:
+        self.button_list = button_list
+        self.ent_list = ent_list
+
 def Level_Select(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
     #tells the game its a menu
     settings.level_or_menu = 0

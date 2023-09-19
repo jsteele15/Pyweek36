@@ -2,6 +2,7 @@ import pygame
 from events_and_inputs import*
 from settings import Settings
 from characters_and_backgrounds import Ent
+from levels import Level
 from ui import Buttons
 
 def Start_Menu():
@@ -32,18 +33,25 @@ def main():
 
     butt1 = Buttons(0, "../res/play_but.png", Vec2(100, 500))
     butt2 = Buttons(3, "../res/dark_matter.png", Vec2(200, 500))
+    butt3 = Buttons(1, "../res/restart.png", Vec2(300, 500))
     button_list.append(butt1)
     button_list.append(butt2)
+    button_list.append(butt3)
+
+    level1 = Level(button_list, ent_list)
+    settings.level_list.append(level1)
+
+    settings.load_level()
 
     screen = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT))
 
     while settings.Running:
         screen.fill((0,0,0))
 
-        actions(ent_list, button_list, settings)
+        actions(settings.ent_list, settings.button_list, settings)
         if settings.PAUSED == False:
-            move_ents(ent_list)
-        draw_ents(ent_list, button_list, settings, screen)
+            move_ents(settings.ent_list)
+        draw_ents(settings.ent_list, settings.button_list, settings, screen)
 
         pygame.display.update()
         settings.clock.tick(60) 
