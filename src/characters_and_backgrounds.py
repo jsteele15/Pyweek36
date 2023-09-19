@@ -150,7 +150,7 @@ class PlanetS(Ent):
     def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), angle: int = 0, thrust = Vec2(0,0), can_move = True):
         self.image_path = "../res/small_planet_ss.png"
         size = Vec2(50,50)
-        self.mass = 00000
+        self.mass = 300000
         self.can_move = False
         self.is_alive = True
         animation_steps = 6

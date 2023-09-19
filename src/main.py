@@ -23,34 +23,37 @@ def main():
     ent_list = []
     button_list = []
 
-    testent = Ship(Vec2(50, 50), thrust = Vec2(0.1, 0))
+    testent = Ship(Vec2(50, 50))
     testent2 = DarkMatter(Vec2(400, 400))
-    testent3 = PlanetL(Vec2(100, 350)) 
+    testent3 = PlanetS(Vec2(100, 350)) 
     ent_list.append(testent)
-    ent_list.append(testent2)
+    #ent_list.append(testent2)
     ent_list.append(testent3)
 
     butt1 = Buttons(0, "../res/play_but.png", Vec2(100, 500))
+    butt2 = Buttons(3, "../res/dark_matter.png", Vec2(200, 500))
     button_list.append(butt1)
+    button_list.append(butt2)
 
     screen = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT))
 
     while settings.Running:
         screen.fill((0,0,0))
 
-        actions(button_list, settings)
+        actions(ent_list, button_list, settings)
         if settings.PAUSED == False:
             move_ents(ent_list)
-        draw_ents(ent_list, button_list, screen)
+        draw_ents(ent_list, button_list, settings, screen)
 
         pygame.display.update()
         settings.clock.tick(60) 
 
-def draw_ents(ent_list, button_list, screen):
+def draw_ents(ent_list, button_list, settings, screen):
     for ent in ent_list:
         ent.draw(screen)
     for button in button_list:
         button.draw(screen)
+    settings.mouse.draw(screen)
 
 def move_ents(ent_list):
     for ent in ent_list:

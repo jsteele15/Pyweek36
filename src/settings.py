@@ -1,6 +1,43 @@
 import pygame
 from music_and_sound import*
+from spritesheet import SpriteSheet
 pygame.init()
+
+
+class Vec2:
+    def __init__(self, x = 0, y = 0):
+        self.x = x
+        self.y =  y
+
+    def __add__(self, o):
+        return Vec2(self.x + o.x, self.y + o.y)
+    
+    def __sub__(self, o):
+        return Vec2(self.x - o.x, self.y - o.y)
+
+    def __mul__(self, o):
+        if type(o) is Vec2:
+            return Vec2(self.x*o.x, self.y*o.y)
+        else:
+            return Vec2(self.x*o, self.y*o)
+        
+    def __div__(self, o):
+        if type(o) is Vec2:
+            return Vec2(self.x/o.x, self.y/o.y)
+        else:
+            return Vec2(self.x/o, self.y/o)
+
+class Mouse:
+    def __init__(self) -> None:
+        self.has_dm = False
+        self.pos = Vec2(0,0)
+        self.dm = SpriteSheet(pygame.image.load(r"../res/dark_matter.png"), 1, self.pos.x, self.pos.y, 50, 50)
+        self.rect = pygame.Rect(self.pos.x, self.pos.y, 50, 50)
+
+    def draw(self, screen):
+        if self.has_dm:
+            screen.blit(self.dm.animation_list[self.dm.ind], self.rect)
+
 
 class Settings():
     #colours to use for debugging
@@ -35,6 +72,8 @@ class Settings():
     #running bool
     Running = True
     
+    mouse = Mouse()
+
     #if its zero its a menu, if its a level its a 1
     ###could be used to split up the draw into two sections
     level_or_menu = 0
@@ -42,28 +81,6 @@ class Settings():
     ###to go into the levels to determin if its the setup stage or not
     #level_started = False
 
-class Vec2:
-    def __init__(self, x = 0, y = 0):
-        self.x = x
-        self.y =  y
-
-    def __add__(self, o):
-        return Vec2(self.x + o.x, self.y + o.y)
-    
-    def __sub__(self, o):
-        return Vec2(self.x - o.x, self.y - o.y)
-
-    def __mul__(self, o):
-        if type(o) is Vec2:
-            return Vec2(self.x*o.x, self.y*o.y)
-        else:
-            return Vec2(self.x*o, self.y*o)
-        
-    def __div__(self, o):
-        if type(o) is Vec2:
-            return Vec2(self.x/o.x, self.y/o.y)
-        else:
-            return Vec2(self.x/o, self.y/o)
         
 G_Const = 0.00001 #constant to multipy gravity. Increasing makes grav stronger and vice versa
 

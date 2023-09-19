@@ -8,23 +8,28 @@ from pygame.locals import*
 from settings import Settings
 
 
-def ready_func(settings):
+def ready_func(button, settings):
     ###a function to start the game, after the pieces have been placed
+    button.visible = False
     settings.PAUSED = False
     settings.started = True
 
-def restart_func(settings):
+def restart_func(button, settings):
     ###a function to restart a level if your not liking how its looking
     settings.level_started = False
     pass
     
     
-def exit_func(settings):
+def exit_func(button, settings):
     ###a function that allows you to exit the program, all these arguments i've fed in are pointless
     settings.Running = False
     sys.exit()
 
-func_list = [ready_func, restart_func, exit_func]
+def pickup_dm(button, settings):
+    settings.mouse.has_dm = True
+    button.visible = False
+
+func_list = [ready_func, restart_func, exit_func, pickup_dm]
 
 
 ###a practice function to make sure the list reference thing is working
@@ -83,8 +88,12 @@ def Drawing():
 
 
 ###gets the events like button presses
-def actions(button_list, settings):
+def actions(ent_list, button_list, settings):
     pos = pygame.mouse.get_pos()
+
+    settings.mouse.rect.x = pos[0]
+    settings.mouse.rect.y = pos[1]
+    
     
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -108,6 +117,10 @@ def actions(button_list, settings):
                 if i.rect.collidepoint(pos):
                     
                     i.Clicked_Once = True
+                else:
+                    if settings.mouse.has_dm == True:
+                        ent_list.append(DarkMatter(Vec2(pos[0], pos[1])))
+                        settings.mouse.has_dm = False
                     """
             for i in entity_list:
                 if i.rect.collidepoint(pos):
