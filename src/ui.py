@@ -23,7 +23,8 @@ class Buttons(SpriteSheet):
         ###need to remember that one is the down possition of the button
             
         if self.Clicked_Once == True and self.Clicked_Twice == True:
-            func_list[self.Function_Reference](self, settings)
+            if self.visible == True:
+                func_list[self.Function_Reference](self, settings)
                 
 
     def draw(self, screen):

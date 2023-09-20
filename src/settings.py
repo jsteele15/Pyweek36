@@ -1,7 +1,7 @@
 import pygame
 from music_and_sound import*
 from spritesheet import SpriteSheet
-from copy import copy
+from copy import deepcopy
 pygame.init()
 
 
@@ -88,8 +88,9 @@ class Settings():
     #level_started = False
 
     def load_level(self):
-        self.ent_list = self.level_list[self.current_level].ent_list.copy()
-        self.button_list = self.level_list[self.current_level].button_list.copy()
+        self.ent_list = deepcopy(self.level_list[self.current_level].ent_list)
+        self.button_list = deepcopy(self.level_list[self.current_level].button_list)
+
         
 G_Const = 0.00001 #constant to multipy gravity. Increasing makes grav stronger and vice versa
 

@@ -16,10 +16,9 @@ def ready_func(button, settings):
 
 def restart_func(button, settings):
     ###a function to restart a level if your not liking how its looking
-    settings.level_started = False
-    settings.paused = True
+    settings.started = False
+    settings.PAUSED = True
     settings.load_level()
-    pass
     
     
 def exit_func(button, settings):

@@ -4,7 +4,7 @@ from settings import Settings
 from characters_and_backgrounds import Ent
 from levels import Level
 from ui import Buttons
-
+from copy import copy
 def Start_Menu():
     #tells the game its a menu
     settings.level_or_menu = 0
@@ -31,6 +31,7 @@ def main():
     #ent_list.append(testent2)
     ent_list.append(testent3)
 
+
     butt1 = Buttons(0, "../res/play_but.png", Vec2(100, 500))
     butt2 = Buttons(3, "../res/dark_matter.png", Vec2(200, 500))
     butt3 = Buttons(1, "../res/restart.png", Vec2(300, 500))
@@ -44,6 +45,8 @@ def main():
     settings.load_level()
 
     screen = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT))
+
+    print(settings.ent_list[0])
 
     while settings.Running:
         screen.fill((0,0,0))
