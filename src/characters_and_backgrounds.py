@@ -28,12 +28,12 @@ class Ent:
         self.sprites = SpriteSheet(pygame.image.load(Path(image_path)), animation_steps, pos.x, pos.y, size.x, size.y)
     
     def draw(self, screen):
-        if self.angle != self.prev_angle:
-            pygame.transform.rotate(self.sprites.animation_list[self.sprites.ind], self.angle)
+        #if self.angle != self.prev_angle:
+        rotated_image = pygame.transform.rotate(self.sprites.animation_list[self.sprites.ind], self.angle)
         
         #pygame.draw.rect(screen, (255, 0, 0), self.hitbox) #draw hitbox
         if self.is_alive: #draw only if not collided
-            screen.blit(self.sprites.animation_list[self.sprites.ind], self.rect)
+            screen.blit(rotated_image, self.rect)
 
     def move(self, ent_list):
         if self.can_move == False:
@@ -105,10 +105,10 @@ class Ship(Ent):
         self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y, ind)
 
 class PlanetL(Ent):
-    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = True):
+    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = True, mass = 20000000):
         self.image_path = "../res/large_planet_ss.png"
         size = Vec2(150,150)
-        self.mass = 20000000
+        self.mass = mass
         self.can_move = False
         self.is_alive = True
         animation_steps = 6
@@ -132,10 +132,10 @@ class PlanetL(Ent):
 
 
 class PlanetM(Ent):
-    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = True):
+    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = True, mass = 1000000):
         self.image_path = "../res/medium_planet_ss.png"
         size = Vec2(100,100)
-        self.mass = 1000000
+        self.mass = mass
         self.can_move = False
         self.is_alive = True
         animation_steps = 6
@@ -160,10 +160,10 @@ class PlanetM(Ent):
 
 
 class PlanetS(Ent):
-    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = True):
+    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = True, mass = 300000):
         self.image_path = "../res/small_planet_ss.png"
         size = Vec2(50,50)
-        self.mass = 300000
+        self.mass = mass
         self.can_move = False
         self.is_alive = True
         animation_steps = 6

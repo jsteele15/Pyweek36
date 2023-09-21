@@ -4,7 +4,7 @@ from settings import*
 from pathlib import Path
 
 class Buttons(SpriteSheet):
-    def __init__(self, Function_Reference, image_path: str, pos: Vec2, visible: bool = True):
+    def __init__(self, Function_Reference, image_path: str, pos: Vec2, visible: bool = True, size_x = 120, size_y = 40, ind = 0, second_ind = 0):
         ###we can give the button an int 0, 1, 2 ect. The use that later when it gets pressed
         ###to call methods from a list
         
@@ -12,11 +12,12 @@ class Buttons(SpriteSheet):
         self.visible = visible
         self.Clicked_Once = False
         self.Clicked_Twice = False
-        self.rect = pygame.Rect(pos.x, pos.y, 100, 40)
+        self.rect = pygame.Rect(pos.x, pos.y, size_x, size_y)
+        self.second_ind = second_ind
         
         ###this button class inherits from sprites sheet, this will allow us to make the buttons
         ###squishy?
-        super().__init__(pygame.image.load(Path(image_path)), 2, pos.x, pos.y, 100, 40)
+        super().__init__(pygame.image.load(Path(image_path)), 4, pos.x, pos.y, size_x, size_y, ind)
 
      
     def pressed(self, func_list, settings):        
@@ -28,8 +29,14 @@ class Buttons(SpriteSheet):
                 
 
     def draw(self, screen):
+        pos = pygame.mouse.get_pos()
+        if self.rect.collidepoint(pos):
+            new_ind = self.second_ind
+        else:
+            new_ind = self.ind
+        
         if self.visible:
-            screen.blit(self.animation_list[self.ind], self.rect)
+            screen.blit(self.animation_list[new_ind], self.rect)
         
         
     def Reset(self):
@@ -77,27 +84,24 @@ ready_button = Buttons(5, readb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT
 
 """
 class Text():
-    def __init__(self, size):
+    def __init__(self, size, level_text, x, y):
         self.size = size
+        self.level_text = level_text
+        self.x = x
+        self.y = y
         self.game_font = pygame.font.Font(Path(r'../res/Audiowide-Regular.ttf'), self.size)
         
-    def Draw(self, *tuple_of_elements):
+    def draw(self, screen):
         #(text, colour, x, y)
-        list_of_tuples = [*tuple_of_elements]
+        text_surface = self.game_font.render(self.level_text, False, (255, 255, 255))
         
-        lengh_of_line = 0
         
-        for i in range(len(list_of_tuples)):
-            text_surface = self.game_font.render(list_of_tuples[i][0], False, (list_of_tuples[i][1]))
-            
-            text_rect = text_surface.get_rect(topleft = ((list_of_tuples[i][2]+lengh_of_line*(i)), list_of_tuples[i][3]))
-            
-            lengh_of_line = text_surface.get_width()
+        screen.blit(text_surface, (self.x, self.y))
+        
             
         ###these tuples will contain all the elements needed to blit different aspects of the ui; also maybe a number
         ###at the begining to decide if its going to be a status bar of a simple number text ect
 
-text = Text(200)
 
 ###text.Draw(f"Number of Kills: {0}", settings.RED, 30, 30) example of use
 

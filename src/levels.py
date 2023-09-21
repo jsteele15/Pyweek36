@@ -6,6 +6,7 @@ class Level:
         self.button_list = button_list
         self.ent_list = ent_list
         self.win_cond = win_cond
+        
 
 def win_cond1(level, settings):
     if settings.ent_list[0].is_alive == False:
@@ -17,6 +18,37 @@ def win_cond2(level, settings):
         if settings.ent_list[0].is_alive == True:
             return True
     return False
+
+def win_cond3(level, settings):
+    if settings.ent_list[0].rect.colliderect(settings.ent_list[1].rect):
+        print("yes")
+        return True
+    return False
+    
+def win_cond4(level, settings):
+    if settings.ent_list[0].rect.colliderect(settings.ent_list[2].rect):
+        settings.FIRST_SHIP = True
+        
+    if settings.ent_list[1].rect.colliderect(settings.ent_list[2].rect):
+        settings.SECOND_SHIP = True
+    if settings.FIRST_SHIP == True and settings.SECOND_SHIP == True:
+        print("dsafnugniu")
+        return True
+        
+    return False
+
+def win_cond4(level, settings):
+    pass
+
+
+
+
+
+
+
+
+
+
 
 
 

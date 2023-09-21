@@ -39,7 +39,6 @@ class Mouse:
         if self.has_dm:
             screen.blit(self.dm.animation_list[self.dm.ind], self.rect)
 
-
 class Settings():
     #colours to use for debugging
     GREEN = (130, 255, 130)
@@ -55,9 +54,15 @@ class Settings():
     started = False
 
     level_list = []
-    current_level = 0
+    current_level = 3
+    
     ent_list = []
     button_list = []
+    
+    ####level 4 attributes
+    FIRST_SHIP = False
+    SECOND_SHIP = False
+    
     
     if __name__ == "__main__": #temporary before I can remove the settings =Settings() below without breaking everything
         screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -92,6 +97,7 @@ class Settings():
         self.PAUSED = True
         self.ent_list = deepcopy(self.level_list[self.current_level].ent_list)
         self.button_list = deepcopy(self.level_list[self.current_level].button_list)
+        
 
         
 G_Const = 0.000006 #constant to multipy gravity. Increasing makes grav stronger and vice versa
