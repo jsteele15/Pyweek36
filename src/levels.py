@@ -48,10 +48,18 @@ def win_cond6(level, settings):
     return False
 
 def win_cond7(level, settings):
+    dead_list = []
+    for i in range(len(settings.ent_list)):
+        
+        if settings.ent_list[i].is_alive == False:
+            dead_list.append(1)
+    
+    if len(dead_list) >= 6:
+        return True
+    return False
+
+def win_cond8(level, settings):
     pass
-
-
-
 
 
 

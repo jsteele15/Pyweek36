@@ -54,7 +54,7 @@ class Settings():
     started = False
 
     level_list = []
-    current_level = 0
+    current_level = 6
     
     ent_list = []
     button_list = []
@@ -63,6 +63,8 @@ class Settings():
     FIRST_SHIP = False
     SECOND_SHIP = False
     
+    ####level 7 attributes
+    murdered = 0
     
     if __name__ == "__main__": #temporary before I can remove the settings =Settings() below without breaking everything
         screen = pygame.display.set_mode((WIDTH, HEIGHT))

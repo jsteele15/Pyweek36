@@ -37,7 +37,8 @@ def main():
     text4 = Text(30, "I bet we'll never hear from them again.\n\n\n\n\n\n\n\n\n\n\n\n                                             Lets get our friends\n                                                 to this small moon", 0, 0)
     text5 = Text(30, "I don't think that was a moon...\n\n\n\n\n\n\n\n\nLook, there, a ship is \ngoing to be pulled into \nthat gas giant. Get them \nout of the planets orbit!", 0, 0)
     text6 = Text(30, "That was close.\n\n\n\n\n\n\n\n\n\n\n\n\n       Return this           family\n       home to the red planet ->", 0, 0)
-    text7 = Text(30, "Lv7", 0, 0)
+    text7 = Text(30, "We saved a life today, well done.\n\nNow lets murder, \n\nIdk, \n\nSix Federation ships\n\n\n\n\n\n\n\n\n\n\n\n\n", 0, 0)
+    text8 = Text(30, "Lv8", 0, 0)
     
     ###training level
     testent = Ship(Vec2(50, 100), ind = 1, angle = 180)
@@ -90,7 +91,13 @@ def main():
     
     ####level 7 ents
     l7_button = [butt1, butt2, butt3, butt4, butt5, butt6]
-    l7_ents = []
+    l7_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.01, 0), ind = 0, angle = 270), Ship(Vec2(100, settings.HEIGHT/2), thrust = Vec2(0.01, 0), ind = 0, angle = 270),
+        Ship(Vec2(600, settings.HEIGHT/4 - 50), thrust = Vec2(-0.01, 0), ind = 0, angle = 90), Ship(Vec2(600, settings.HEIGHT - 100), thrust = Vec2(-0.01, 0), ind = 0, angle = 90),
+        Ship(Vec2(300, 100), thrust = Vec2(0, 0.1), ind = 0, angle = 180), Ship(Vec2(400, 100), thrust = Vec2(0, 0.01), ind = 0, angle = 180)]
+    
+    ###level 8 ents
+    l8_button = []
+    l8_ents = []
     
     ###where it gets appended to the level lists
     level1 = Level(button_list, ent_list, win_cond1)
@@ -100,6 +107,7 @@ def main():
     level5 = Level(l5_button, l5_ents, win_cond5)
     level6 = Level(l6_button, l6_ents, win_cond6)
     level7 = Level(l7_button, l7_ents, win_cond7)
+    level8 = Level(l8_button, l8_ents, win_cond8)
     
     settings.level_list.append(level1)
     settings.level_list.append(level2)
@@ -108,6 +116,7 @@ def main():
     settings.level_list.append(level5)
     settings.level_list.append(level6)
     settings.level_list.append(level7)
+    settings.level_list.append(level8)
     
     ###appending texts
     text_list.append(text1)
@@ -117,6 +126,7 @@ def main():
     text_list.append(text5)
     text_list.append(text6)
     text_list.append(text7)
+    text_list.append(text8)
     
     text_list.append("")
     
