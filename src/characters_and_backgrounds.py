@@ -80,7 +80,7 @@ class Ent:
 class Ship(Ent):
     def __init__(self, pos: Vec2, vel: Vec2= Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = True):
         self.image_path = "../res/ship_and_astroid_ss.png"
-        size = Vec2(40,50)
+        size = Vec2(39,46)
         self.mass = 1
         self.can_move = True
         self.is_alive = True
