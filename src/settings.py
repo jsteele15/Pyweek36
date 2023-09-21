@@ -32,7 +32,7 @@ class Mouse:
     def __init__(self) -> None:
         self.has_dm = False
         self.pos = Vec2(0,0)
-        self.dm = SpriteSheet(pygame.image.load(r"../res/dark_matter.png"), 1, self.pos.x, self.pos.y, 50, 50)
+        self.dm = SpriteSheet(pygame.image.load(r"../res/dark_matter.png"), 1, self.pos.x, self.pos.y, 50, 50, 0)
         self.rect = pygame.Rect(self.pos.x, self.pos.y, 50, 50)
 
     def draw(self, screen):

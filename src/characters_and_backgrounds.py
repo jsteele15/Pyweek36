@@ -78,13 +78,13 @@ class Ent:
         self.angle = calc_angle(self.vel.x, self.vel.y)
 
 class Ship(Ent):
-    def __init__(self, pos: Vec2, vel: Vec2= Vec2(0,0), angle: int = 0, thrust = Vec2(0,0), can_move = True):
-        self.image_path = "../res/ship.png"
-        size = Vec2(50,50)
+    def __init__(self, pos: Vec2, vel: Vec2= Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = True):
+        self.image_path = "../res/ship_and_astroid_ss.png"
+        size = Vec2(40,50)
         self.mass = 1
         self.can_move = True
         self.is_alive = True
-        animation_steps = 1
+        animation_steps = 18
         self.hitoff = Vec2(2, 6)
 
         self.is_collidable = True
@@ -102,10 +102,10 @@ class Ship(Ent):
         self.ID = Ent.ent_count
         Ent.ent_count += 1
         
-        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y)
+        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y, ind)
 
 class PlanetL(Ent):
-    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), angle: int = 0, thrust = Vec2(0,0), can_move = True):
+    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = True):
         self.image_path = "../res/large_planet_ss.png"
         size = Vec2(150,150)
         self.mass = 20000000
@@ -128,11 +128,11 @@ class PlanetL(Ent):
         self.ID = Ent.ent_count
         Ent.ent_count += 1
         
-        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y)
+        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y, ind)
 
 
 class PlanetM(Ent):
-    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), angle: int = 0, thrust = Vec2(0,0), can_move = True):
+    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = True):
         self.image_path = "../res/medium_planet_ss.png"
         size = Vec2(100,100)
         self.mass = 1000000
@@ -156,11 +156,11 @@ class PlanetM(Ent):
         self.ID = Ent.ent_count
         Ent.ent_count += 1
         
-        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y)
+        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y, ind)
 
 
 class PlanetS(Ent):
-    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), angle: int = 0, thrust = Vec2(0,0), can_move = True):
+    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = True):
         self.image_path = "../res/small_planet_ss.png"
         size = Vec2(50,50)
         self.mass = 300000
@@ -184,11 +184,11 @@ class PlanetS(Ent):
         self.ID = Ent.ent_count
         Ent.ent_count += 1
         
-        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y)
+        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y, ind)
 
 
 class DarkMatter(Ent):
-    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), angle: int = 0):
+    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0):
         self.image_path = "../res/dark_matter.png"
         size = Vec2(50,50)
         self.mass = 1000000
@@ -211,7 +211,7 @@ class DarkMatter(Ent):
         self.ID = Ent.ent_count
         Ent.ent_count += 1
         
-        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y)
+        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y, ind)
 
        
 

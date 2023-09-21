@@ -24,9 +24,9 @@ def main():
     ent_list = []
     button_list = []
 
-    testent = Ship(Vec2(50, 50))
+    testent = Ship(Vec2(50, 50), ind = 4)
     testent2 = DarkMatter(Vec2(400, 400))
-    testent3 = PlanetS(Vec2(100, 350)) 
+    testent3 = PlanetS(Vec2(100, 350), ind = 4) 
     ent_list.append(testent)
     #ent_list.append(testent2)
     ent_list.append(testent3)
@@ -42,7 +42,7 @@ def main():
 
     l2_button = [butt1, butt2, butt3, butt4]
 
-    l2_ents = [Ship(Vec2(50, 100), thrust = Vec2(0.1, 0)), PlanetM(Vec2(400, 75)), PlanetM(Vec2(401, 350)) ]
+    l2_ents = [Ship(Vec2(50, 100), thrust = Vec2(0.1, 0)), PlanetM(Vec2(400, 75)), PlanetS(Vec2(401, 350)) ]
 
     level1 = Level(button_list, ent_list, win_cond1)
     level2 = Level(l2_button, l2_ents, win_cond2)

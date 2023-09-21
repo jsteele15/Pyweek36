@@ -2,13 +2,13 @@ from settings import*
 from pathlib import Path
 
 class SpriteSheet:
-    def __init__(self, image, animation_steps, x_pos, y_pos, x_cut, y_cut):
+    def __init__(self, image, animation_steps, x_pos, y_pos, x_cut, y_cut, ind = 0):
         self.sheet = image
         self.animation_list = []
         self.animation_steps = animation_steps
         
         ###ind is used to define what image in the animation_list is used
-        self.ind = 0
+        self.ind = ind
         
         ###this defines the size of the smaller sub image to be cut out of the picture
         self.x_cut = x_cut
