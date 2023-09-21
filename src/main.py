@@ -35,7 +35,9 @@ def main():
     text2 = Text(30, "Good, now\n\nget the Red \n\nship through \n\nthe planet and \n\nthe moon safely", settings.WIDTH - 280, 80)
     text3 = Text(30, "That was lame.\n\n\n\n\n\n\n\n\n\n                     NOW LETS HIT THIS BLUE PLANET \n                                              WITH A METEORITE! \n                                           DON'T HIT THE MOON", 0, 0)
     text4 = Text(30, "I bet we'll never hear from them again.\n\n\n\n\n\n\n\n\n\n\n\n                                             Lets get our friends\n                                                 to this small moon", 0, 0)
-    text5 = Text(30, "Lv5", 0, 0)
+    text5 = Text(30, "I don't think that was a moon...\n\n\n\n\n\n\n\n\nLook, there, a ship is \ngoing to be pulled into \nthat gas giant. Get them \nout of the planets orbit!", 0, 0)
+    text6 = Text(30, "That was close.\n\n\n\n\n\n\n\n\n\n\n\n\n       Return this           family\n       home to the red planet ->", 0, 0)
+    text7 = Text(30, "Lv7", 0, 0)
     
     ###training level
     testent = Ship(Vec2(50, 100), ind = 1, angle = 180)
@@ -52,6 +54,7 @@ def main():
     butt2 = Buttons(3, "../res/dark_matter.png", Vec2(630, 110), size_x = 50, size_y = 50)
     butt4 = Buttons(3, "../res/dark_matter.png", Vec2(300, 500), size_x = 50, size_y = 50)
     butt5 = Buttons(3, "../res/dark_matter.png", Vec2(350, 250), size_x = 50, size_y = 50)
+    butt6 = Buttons(3, "../res/dark_matter.png", Vec2(490, 250), size_x = 50, size_y = 50)
     
     
     button_list.append(butt1)
@@ -77,21 +80,34 @@ def main():
         PlanetS(Vec2(settings.WIDTH-100, settings.HEIGHT/2 -50), mass = 0, ind = 4), PlanetL(Vec2(settings.WIDTH/3, settings.HEIGHT/2), mass = 0, ind = 4), PlanetL(Vec2(settings.WIDTH-100, settings.HEIGHT/4 - 100), mass = 0, ind = 5)]
     
     ###level 5 ents
-    l5_button = []
-    l5_ents = []
+    l5_button = [butt1, butt2, butt3, butt4, butt5, butt6]
+    l5_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.01, 0), ind = 7, angle = 180), PlanetL(Vec2(settings.WIDTH/2, settings.HEIGHT/2), ind = 0, mass = 10000000)]
+    
+    ###level 6 ents
+    l6_button = [butt1, butt2, butt3, butt4, butt5, butt6]
+    l6_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.1, 0), ind = 7, angle = 270), PlanetM(Vec2(settings.WIDTH/2 + 100, settings.HEIGHT -100), ind = 2, mass = 0),
+        PlanetL(Vec2(settings.WIDTH/2 + 100, settings.HEIGHT -280), ind = 3, mass = 1000000)]
+    
+    ####level 7 ents
+    l7_button = [butt1, butt2, butt3, butt4, butt5, butt6]
+    l7_ents = []
     
     ###where it gets appended to the level lists
     level1 = Level(button_list, ent_list, win_cond1)
     level2 = Level(l2_button, l2_ents, win_cond2)
     level3 = Level(l3_button, l3_ents, win_cond3)
     level4 = Level(l4_button, l4_ents, win_cond4)
-    level5 = Level(l5_button, l5_ents, wind_cond5)
+    level5 = Level(l5_button, l5_ents, win_cond5)
+    level6 = Level(l6_button, l6_ents, win_cond6)
+    level7 = Level(l7_button, l7_ents, win_cond7)
     
     settings.level_list.append(level1)
     settings.level_list.append(level2)
     settings.level_list.append(level3)
     settings.level_list.append(level4)
     settings.level_list.append(level5)
+    settings.level_list.append(level6)
+    settings.level_list.append(level7)
     
     ###appending texts
     text_list.append(text1)
@@ -99,6 +115,8 @@ def main():
     text_list.append(text3)
     text_list.append(text4)
     text_list.append(text5)
+    text_list.append(text6)
+    text_list.append(text7)
     
     text_list.append("")
     

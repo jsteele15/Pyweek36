@@ -37,12 +37,18 @@ def win_cond4(level, settings):
         
     return False
 
-def win_cond4(level, settings):
+def win_cond5(level, settings):
+    if settings.ent_list[0].rect.y <= 0 or settings.ent_list[0].rect.x <= 0:
+        return True
+    return False
+
+def win_cond6(level, settings):
+    if settings.ent_list[0].rect.colliderect(settings.ent_list[1].rect):
+        return True
+    return False
+
+def win_cond7(level, settings):
     pass
-
-
-
-
 
 
 
