@@ -2,9 +2,18 @@ import pygame
 from settings import*
 
 class Level:
-    def __init__(self, button_list, ent_list) -> None:
+    def __init__(self, button_list, ent_list, win_cond) -> None:
         self.button_list = button_list
         self.ent_list = ent_list
+        self.win_cond = win_cond
+
+def win_cond1(level, settings):
+    if settings.ent_list[0].is_alive == False:
+        if setting.ent_list[1].is_alive == False:
+            return True
+    return False
+
+
 
 def Level_Select(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
     #tells the game its a menu

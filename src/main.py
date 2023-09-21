@@ -2,7 +2,7 @@ import pygame
 from events_and_inputs import*
 from settings import Settings
 from characters_and_backgrounds import Ent
-from levels import Level
+from levels import Level, win_cond1
 from ui import Buttons
 from copy import copy
 def Start_Menu():
@@ -39,14 +39,12 @@ def main():
     button_list.append(butt2)
     button_list.append(butt3)
 
-    level1 = Level(button_list, ent_list)
+    level1 = Level(button_list, ent_list, win_cond1)
     settings.level_list.append(level1)
 
     settings.load_level()
 
     screen = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT))
-
-    print(settings.ent_list[0])
 
     while settings.Running:
         screen.fill((0,0,0))
@@ -55,6 +53,11 @@ def main():
         if settings.PAUSED == False:
             move_ents(settings.ent_list)
         draw_ents(settings.ent_list, settings.button_list, settings, screen)
+
+        if settings.level_list[settings.current_level].win_cond(settings.level_list[settings.current_level], settings):
+            settings.current_level += 1
+            settings.load_level()
+            print("Win!!!!")
 
         pygame.display.update()
         settings.clock.tick(60) 
