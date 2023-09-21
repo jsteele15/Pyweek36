@@ -88,9 +88,11 @@ class Settings():
     #level_started = False
 
     def load_level(self):
+        self.started = False
+        self.PAUSED = True
         self.ent_list = deepcopy(self.level_list[self.current_level].ent_list)
         self.button_list = deepcopy(self.level_list[self.current_level].button_list)
 
         
-G_Const = 0.00001 #constant to multipy gravity. Increasing makes grav stronger and vice versa
+G_Const = 0.000006 #constant to multipy gravity. Increasing makes grav stronger and vice versa
 

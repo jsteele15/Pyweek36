@@ -2,7 +2,7 @@ import pygame
 from events_and_inputs import*
 from settings import Settings
 from characters_and_backgrounds import Ent
-from levels import Level, win_cond1
+from levels import Level, win_cond1, win_cond2
 from ui import Buttons
 from copy import copy
 def Start_Menu():
@@ -34,13 +34,21 @@ def main():
 
     butt1 = Buttons(0, "../res/play_but.png", Vec2(100, 500))
     butt2 = Buttons(3, "../res/dark_matter.png", Vec2(200, 500))
-    butt3 = Buttons(1, "../res/restart.png", Vec2(300, 500))
+    butt4 = Buttons(3, "../res/dark_matter.png", Vec2(300, 500))
+    butt3 = Buttons(1, "../res/restart.png", Vec2(400, 500))
     button_list.append(butt1)
     button_list.append(butt2)
     button_list.append(butt3)
 
+    l2_button = [butt1, butt2, butt3, butt4]
+
+    l2_ents = [Ship(Vec2(50, 100), thrust = Vec2(0.1, 0)), PlanetM(Vec2(400, 75)), PlanetM(Vec2(401, 350)) ]
+
     level1 = Level(button_list, ent_list, win_cond1)
+    level2 = Level(l2_button, l2_ents, win_cond2)
+
     settings.level_list.append(level1)
+    settings.level_list.append(level2)
 
     settings.load_level()
 

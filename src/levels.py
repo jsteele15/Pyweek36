@@ -9,7 +9,12 @@ class Level:
 
 def win_cond1(level, settings):
     if settings.ent_list[0].is_alive == False:
-        if setting.ent_list[1].is_alive == False:
+        return True
+    return False
+
+def win_cond2(level, settings):
+    if settings.ent_list[0].rect.x >= (settings.ent_list[1].rect.x + 200):
+        if settings.ent_list[0].is_alive == True:
             return True
     return False
 

@@ -17,6 +17,8 @@ class Ent:
         self.vel = vel
         self.mass = mass
         self.is_alive = True
+        self.is_collidable = True
+        self.is_invincible = True
         self.thrust = thrust
         self.can_move = can_move
 
@@ -54,8 +56,11 @@ class Ent:
                     #adds all gravitational pulls for objects together before moving
                 
                     if self.hitbox.colliderect(ent.hitbox): #collision check
-                        self.is_alive = False
-                        ent.is_alive = False
+                        if self.is_collidable and ent.is_collidable:
+                            if self.is_invincible == False:
+                                self.is_alive = False
+                            if ent.is_invincible == False:
+                                ent.is_alive = False
 
         self.vel += self.thrust
         self.vel.x /= self.mass #More massive objects require more force to move quickly
@@ -82,6 +87,9 @@ class Ship(Ent):
         animation_steps = 1
         self.hitoff = Vec2(2, 6)
 
+        self.is_collidable = True
+        self.is_invincible = False
+
         self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
         self.hitbox = pygame.Rect(pos.x+self.hitoff.x, pos.y+self.hitoff.y, size.x - self.hitoff.x*2, size.y - self.hitoff.y*2)
         self.pos = pos
@@ -105,6 +113,8 @@ class PlanetL(Ent):
         self.is_alive = True
         animation_steps = 6
         self.hitoff = Vec2(10, 10)
+        self.is_collidable = True
+        self.is_invincible = True
 
         self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
         self.hitbox = pygame.Rect(pos.x+self.hitoff.x, pos.y+self.hitoff.y, size.x - self.hitoff.x*2, size.y - self.hitoff.y*2)
@@ -125,11 +135,14 @@ class PlanetM(Ent):
     def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), angle: int = 0, thrust = Vec2(0,0), can_move = True):
         self.image_path = "../res/medium_planet_ss.png"
         size = Vec2(100,100)
-        self.mass = 7000000
+        self.mass = 1000000
         self.can_move = False
         self.is_alive = True
         animation_steps = 6
         self.hitoff = Vec2(7, 7)
+
+        self.is_collidable = True
+        self.is_invincible = True
 
         self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
         self.hitbox = pygame.Rect(pos.x+self.hitoff.x, pos.y+self.hitoff.y, size.x - self.hitoff.x*2, size.y - self.hitoff.y*2)
@@ -156,6 +169,9 @@ class PlanetS(Ent):
         animation_steps = 6
         self.hitoff = Vec2(5, 5)
 
+        self.is_collidable = True
+        self.is_invincible = True
+
         self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
         self.hitbox = pygame.Rect(pos.x+self.hitoff.x, pos.y+self.hitoff.y, size.x - self.hitoff.x*2, size.y - self.hitoff.y*2)
         self.pos = pos
@@ -180,6 +196,9 @@ class DarkMatter(Ent):
         self.is_alive = True
         animation_steps = 1
         self.hitoff = Vec2(5, 5)
+
+        self.is_collidable = False
+        self.is_invincible = True
 
         self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
         self.hitbox = pygame.Rect(pos.x+self.hitoff.x, pos.y+self.hitoff.y, size.x - self.hitoff.x*2, size.y - self.hitoff.y*2)
