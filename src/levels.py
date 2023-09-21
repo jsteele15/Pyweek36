@@ -40,6 +40,10 @@ def win_cond4(level, settings):
 def win_cond5(level, settings):
     if settings.ent_list[0].rect.y <= 0 or settings.ent_list[0].rect.x <= 0:
         return True
+    if settings.ent_list[0].rect.y >= settings.HEIGHT and settings.ent_list[0].is_alive == True:
+        return True
+    if settings.ent_list[0].rect.x >= settings.WIDTH and settings.ent_list[0].is_alive == True:
+        return True
     return False
 
 def win_cond6(level, settings):
