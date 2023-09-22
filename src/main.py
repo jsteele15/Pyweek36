@@ -143,12 +143,14 @@ def main():
         
         actions(settings.ent_list, settings.button_list, settings)
         if settings.PAUSED == False:
-            move_ents(settings.ent_list)
+            move_ents(settings.ent_list, settings)
             
         draw_ents(settings.ent_list, settings.button_list, text_list, settings, screen)
 
         if settings.level_list[settings.current_level].win_cond(settings.level_list[settings.current_level], settings):
             settings.current_level += 1
+            settings.trail_points = []
+            settings.prev_trail_points = []
             settings.load_level()
             print("Win!!!!")
         
@@ -156,7 +158,24 @@ def main():
         settings.clock.tick(60) 
 
 def draw_ents(ent_list, button_list, text_list, settings, screen):
+
     
+    for i in range(0, len(settings.prev_trail_points)):  #draw prev trail live
+        if len(settings.prev_trail_points[i]) >= 2:
+            current_point = 0
+            point_max = len(settings.prev_trail_points[i]) - len(settings.prev_trail_points[i])%2 -2 #makes even number
+            while current_point < point_max:
+                pygame.draw.line(screen, (64, 64, 128) ,settings.prev_trail_points[i][current_point], settings.prev_trail_points[i][current_point+1])
+                current_point += 1
+
+    for i in range(0, len(settings.trail_points)):
+        if len(settings.trail_points[i]) >= 2:
+            current_point = 0
+            point_max = len(settings.trail_points[i]) - len(settings.trail_points[i])%2 -2 #makes even number
+            while current_point < point_max:
+                pygame.draw.line(screen, (0, 0, 255), settings.trail_points[i][current_point], settings.trail_points[i][current_point+1])
+                current_point += 1
+
     text_list[settings.current_level].draw(screen)
     for ent in ent_list:
         ent.draw(screen)
@@ -164,9 +183,19 @@ def draw_ents(ent_list, button_list, text_list, settings, screen):
         button.draw(screen)
     settings.mouse.draw(screen)
 
-def move_ents(ent_list):
+    
+
+def move_ents(ent_list, settings):
     for ent in ent_list:
         ent.move(ent_list)
+    
+    settings.trail_count += 1
+    for index, ent in enumerate(ent_list):
+        if type(ent) == Ship and ent.is_alive == True: #create list of points for light trail
+            if settings.trail_count >= 3:
+                settings.trail_points[index].append((ent.rect.x + 0.5*ent.rect.w, ent.rect.y+0.5*ent.rect.h))
+    if settings.trail_count >= 3:
+        settings.trail_count = 0
 
 if __name__ == "__main__":
     #Start_Menu()

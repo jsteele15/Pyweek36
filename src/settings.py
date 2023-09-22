@@ -54,7 +54,7 @@ class Settings():
     started = False
 
     level_list = []
-    current_level = 4
+    current_level = 6
     
     ent_list = []
     button_list = []
@@ -62,6 +62,11 @@ class Settings():
     ####level 4 attributes
     FIRST_SHIP = False
     SECOND_SHIP = False
+
+
+    trail_count = 0
+    trail_points = []
+    prev_trail_points = []
 
     
     if __name__ == "__main__": #temporary before I can remove the settings =Settings() below without breaking everything
@@ -95,8 +100,14 @@ class Settings():
     def load_level(self):
         self.started = False
         self.PAUSED = True
+        self.prev_trail_points = deepcopy(self.trail_points)
+        self.trail_points = []
         self.ent_list = deepcopy(self.level_list[self.current_level].ent_list)
         self.button_list = deepcopy(self.level_list[self.current_level].button_list)
+        for ent in self.ent_list:
+                self.trail_points.append([])
+                self.prev_trail_points.append([])
+
         
 
         
