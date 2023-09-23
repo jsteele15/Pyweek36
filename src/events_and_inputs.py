@@ -41,11 +41,7 @@ def skip(button, settings):
 func_list = [ready_func, restart_func, exit_func, pickup_dm, start_game, skip]
 
 
-###a practice function to make sure the list reference thing is working
-def printing(button_list):
-    print("hello world")
-    for i in button_list:
-        i.Reset()
+
 
 
 ###gets the events like button presses
@@ -85,12 +81,7 @@ def actions(ent_list, button_list, settings):
                     if settings.mouse.has_dm == True:
                         ent_list.append(DarkMatter(Vec2(pos[0], pos[1])))
                         settings.mouse.has_dm = False
-                    """
-            for i in entity_list:
-                if i.rect.collidepoint(pos):
-                    i.Clicked = True
-                    print(f"clicked {i.Clicked}")
-            """
+            
         if event.type == MOUSEBUTTONUP:
             for i in button_list:
                 if i.rect.collidepoint(pos):
@@ -99,12 +90,4 @@ def actions(ent_list, button_list, settings):
                     i.Clicked_Once = False
                     i.Clicked_Twice = False
                     
-    
-    ###the actions function goes into every menu loop
-    ###the two functions below need to be in every loop
-    ###ergo, i've placed them in this function even though 
-    ###it doesnt make a huge amount of sense based on what they do
-    ###move them if you want
-    
-    #pygame.display.update()
-    #settings.clock.tick(60)        
+      

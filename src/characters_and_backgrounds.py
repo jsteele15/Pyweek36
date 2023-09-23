@@ -84,7 +84,7 @@ class Ship(Ent):
         self.mass = 1
         self.can_move = True
         self.is_alive = True
-        animation_steps = 18
+        animation_steps = 19
         self.hitoff = Vec2(2, 6)
 
         self.is_collidable = True

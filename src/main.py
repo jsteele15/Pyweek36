@@ -27,7 +27,13 @@ if sound:
 def main():
     pygame.init()
     
-
+    ###adds a title
+    pygame.display.set_caption("Untitled Gravity Puzzler")
+    
+    ###adds an icon
+    icon = pygame.image.load("../res/icon.png")
+    pygame.display.set_icon(icon)
+    
     settings = Settings()
     ####level 1 stuff
     
@@ -80,6 +86,8 @@ def main():
     butt8 = Buttons(3, "../res/dark_matter.png", Vec2(200, 400), size_x = 50, size_y = 50, ind = 1)
     butt9 = Buttons(3, "../res/dark_matter.png", Vec2(550, 550), size_x = 50, size_y = 50, ind = 1)
     butt10 = Buttons(3, "../res/dark_matter.png", Vec2(100, 100), size_x = 50, size_y = 50, ind = 1)
+    menu_dm = Buttons(3, "../res/dark_matter.png", Vec2(500, 180), size_x = 50, size_y = 50, ind = 0)
+    
     
     start_button = Buttons(4, "../res/menu_ss.png", Vec2(settings.WIDTH/2 - 140, settings.HEIGHT -60), size_x = 120, size_y = 40, second_ind = 1)
     end_button = Buttons(2, "../res/menu_ss.png", Vec2(settings.WIDTH/2 +20, settings.HEIGHT -60), size_x = 120, size_y = 40, ind = 2, second_ind = 3)
@@ -89,8 +97,8 @@ def main():
     button_list.append(butt3)
     
     ###menu
-    menu_button = [start_button, end_button]
-    menu_ents = [Ship(Vec2(500, settings.HEIGHT/2), thrust = Vec2(-0.1, 0), ind = 7)]
+    menu_button = [start_button, end_button, menu_dm]
+    menu_ents = [Ship(Vec2(505, settings.HEIGHT/2+10), thrust = Vec2(-0.1, 0), ind = 7), PlanetS(Vec2(500, 50), mass = 0)]
     
     ###level 2 stuff
     l2_button = [butt1, butt5, butt3, butt4, skip_butt]
@@ -100,8 +108,7 @@ def main():
     l3_button = [butt1, butt5, butt3, butt4, skip_butt]
     l3_ents = [Ship(Vec2(100 * i, settings.HEIGHT/2), thrust = Vec2(0, 0.01), ind = 8 + i, angle = 180) for x, i in enumerate(range(1, 7))]
     
-    
-    
+
     ###level 4 ents
     l4_button = [butt1, butt2, butt3, butt4, butt5, skip_butt]
     l4_ents = [Ship(Vec2(50, settings.HEIGHT/2), thrust = Vec2(0.01, 0), ind = 9, angle = 90), 
@@ -143,9 +150,9 @@ def main():
     
     ###level 11 ents, rescue the rebel ship destroy the empire ship
     l11_button = [butt1, butt6, butt3, butt4, butt5, skip_butt]
-    l11_ents = [Ship(Vec2(200, 100), thrust = Vec2(0, 0.1), ind = 4, angle = 180), Ship(Vec2(100, 100), thrust = Vec2(0.1, 0), ind = 5, angle = 180), PlanetM(Vec2(settings.WIDTH/2 - 100, settings.HEIGHT/2 - 100), ind = 5, mass = 400000), PlanetM(Vec2(500, 300), ind = 4, mass = 400000),
+    l11_ents = [Ship(Vec2(200, 100), thrust = Vec2(0, 0.1), ind = 18, angle = 0), Ship(Vec2(100, 100), thrust = Vec2(0.1, 0), ind = 5, angle = 180), PlanetM(Vec2(settings.WIDTH/2 - 100, settings.HEIGHT/2 - 100), ind = 5, mass = 400000), PlanetM(Vec2(500, 300), ind = 4, mass = 400000),
         AsteroidF(Vec2(300, settings.HEIGHT-100), ind = 0, angle = 90), AsteroidF(Vec2(-100, settings.HEIGHT-100), angle = 180, ind = 0), AsteroidF(Vec2(500, settings.HEIGHT - 100), angle = 180, ind = 1), AsteroidF(Vec2(100, settings.HEIGHT-100), angle = 180, ind = 0), AsteroidF(Vec2(700, settings.HEIGHT-100), ind = 1, angle = 90),
-        AsteroidF(Vec2(300, settings.HEIGHT-100), ind = 0, angle = 0), AsteroidF(Vec2(-100, settings.HEIGHT-100), angle = 90, ind = 0), AsteroidF(Vec2(500, settings.HEIGHT - 100), angle = 0, ind = 1), AsteroidF(Vec2(100, settings.HEIGHT-100), angle = 0, ind = 0), AsteroidF(Vec2(700, settings.HEIGHT-100), ind = 1, angle = 180)]
+        AsteroidF(Vec2(200, settings.HEIGHT-100), ind = 0, angle = 0), AsteroidF(Vec2(0, settings.HEIGHT-100), angle = 90, ind = 0), AsteroidF(Vec2(400, settings.HEIGHT - 100), angle = 0, ind = 1), AsteroidF(Vec2(600, settings.HEIGHT-100), angle = 0, ind = 0), AsteroidF(Vec2(800, settings.HEIGHT-100), ind = 1, angle = 180)]
     
     ###level 12 ents, destroy the earth again
     l12_button = [butt1, butt6, butt3, butt4, butt5, butt2, skip_butt]

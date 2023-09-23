@@ -36,7 +36,6 @@ def win_cond3(level, settings):
     
 def win_cond4(level, settings):
     if settings.ent_list[0].rect.colliderect(settings.ent_list[1].rect):
-        print("yes")
         return True
     return False
     
@@ -124,7 +123,6 @@ def win_cond1end(level, settings):
         if settings.ent_list[i].is_alive == False:
             dead_list.append(1)
             
-    print(len(dead_list))
     if len(dead_list) >= 8:
         return True
     return False
