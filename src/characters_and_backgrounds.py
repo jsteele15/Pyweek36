@@ -166,7 +166,7 @@ class PlanetS(Ent):
         self.mass = mass
         self.can_move = can_move
         self.is_alive = True
-        animation_steps = 6
+        animation_steps = 7
         self.hitoff = Vec2(5, 5)
 
         self.is_collidable = True

@@ -34,7 +34,11 @@ def start_game(button, settings):
     settings.current_level += 1
     settings.load_level()
 
-func_list = [ready_func, restart_func, exit_func, pickup_dm, start_game]
+def skip(button, settings):
+    settings.current_level += 1
+    settings.load_level()
+
+func_list = [ready_func, restart_func, exit_func, pickup_dm, start_game, skip]
 
 
 ###a practice function to make sure the list reference thing is working

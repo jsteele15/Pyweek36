@@ -119,10 +119,12 @@ def win_cond12(level, settings):
     
 def win_cond1end(level, settings):
     dead_list = []
+    
     for i in range(len(settings.ent_list)):
-        if settings.ent_list[1].is_alive == False:
+        if settings.ent_list[i].is_alive == False:
             dead_list.append(1)
             
+    print(len(dead_list))
     if len(dead_list) >= 8:
         return True
     return False
@@ -132,53 +134,3 @@ def win_end(level, settings):
 
 
 
-
-
-
-def Level_Select(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
-    #tells the game its a menu
-    settings.level_or_menu = 0
-    
-    button_list.clear()
-    for i in menu_level_select_list:
-        button_list.append(i)
-    
-    while settings.Running:
-        Drawing()
-        Actions(button_list)
-
-
-def Level_One(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
-    settings.level_or_menu = 1
-    
-    button_list.clear()
-    for i in on_map_button_list:
-        button_list.append(i)
-        
-    while settings.Running:
-        Drawing()
-        Actions(button_list)
-
-    
-def Level_Two(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
-    settings.level_or_menu = 1
-    
-    button_list.clear()
-    for i in on_map_button_list:
-        button_list.append(i)
-        
-    while settings.Running:
-        Drawing()
-        Actions(button_list)
-   
-   
-def Level_Three(function_list, button_list, menu_level_select_list, Drawing, Actions, on_map_button_list):
-    settings.level_or_menu = 1
-    
-    button_list.clear()
-    for i in on_map_button_list:
-        button_list.append(i)
-        
-    while settings.Running:
-        Drawing()
-        Actions(button_list)

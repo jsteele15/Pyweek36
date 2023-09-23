@@ -17,7 +17,7 @@ class Buttons(SpriteSheet):
         
         ###this button class inherits from sprites sheet, this will allow us to make the buttons
         ###squishy?
-        super().__init__(pygame.image.load(Path(image_path)), 4, pos.x, pos.y, size_x, size_y, ind)
+        super().__init__(pygame.image.load(Path(image_path)), 6, pos.x, pos.y, size_x, size_y, ind)
 
      
     def pressed(self, func_list, settings):        
