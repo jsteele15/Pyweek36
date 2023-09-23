@@ -104,7 +104,7 @@ def main():
     
     ###level 2 stuff
     l2_button = [butt1, butt5, butt3, butt4, skip_butt]
-    l2_ents = [Ship(Vec2(50, 100), thrust = Vec2(0.1, 0), ind = 2, angle = 90), PlanetM(Vec2(400, 75), ind = 2), PlanetS(Vec2(401, 350), ind = 1) ]
+    l2_ents = [Ship(Vec2(300, 100), thrust = Vec2(0, 0.01), ind = 2, angle = 0), PlanetM(Vec2(400, 75), ind = 2, mass = 0), PlanetS(Vec2(401, 350), ind = 1, mass = 0) ]
     
     ###level 3 ents, use meteorites to make a new planet
     l3_button = [butt1, butt5, butt3, butt4, skip_butt]
