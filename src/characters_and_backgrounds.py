@@ -105,16 +105,16 @@ class Ship(Ent):
         self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y, ind)
 
 class PlanetL(Ent):
-    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = True, mass = 20000000):
+    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = False, mass = 20000000, is_invincible = True):
         self.image_path = "../res/large_planet_ss.png"
         size = Vec2(150,150)
         self.mass = mass
-        self.can_move = False
+        self.can_move = can_move
         self.is_alive = True
         animation_steps = 6
         self.hitoff = Vec2(10, 10)
         self.is_collidable = True
-        self.is_invincible = True
+        self.is_invincible = is_invincible
 
         self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
         self.hitbox = pygame.Rect(pos.x+self.hitoff.x, pos.y+self.hitoff.y, size.x - self.hitoff.x*2, size.y - self.hitoff.y*2)
@@ -132,17 +132,17 @@ class PlanetL(Ent):
 
 
 class PlanetM(Ent):
-    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = True, mass = 1000000):
+    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = False, mass = 1000000, is_invincible = True):
         self.image_path = "../res/medium_planet_ss.png"
         size = Vec2(100,100)
         self.mass = mass
-        self.can_move = False
+        self.can_move = can_move
         self.is_alive = True
         animation_steps = 6
         self.hitoff = Vec2(7, 7)
 
         self.is_collidable = True
-        self.is_invincible = True
+        self.is_invincible = is_invincible
 
         self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
         self.hitbox = pygame.Rect(pos.x+self.hitoff.x, pos.y+self.hitoff.y, size.x - self.hitoff.x*2, size.y - self.hitoff.y*2)
@@ -160,17 +160,17 @@ class PlanetM(Ent):
 
 
 class PlanetS(Ent):
-    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = True, mass = 300000):
+    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = False, mass = 300000, is_invincible = True):
         self.image_path = "../res/small_planet_ss.png"
         size = Vec2(50,50)
         self.mass = mass
-        self.can_move = False
+        self.can_move = can_move
         self.is_alive = True
         animation_steps = 6
         self.hitoff = Vec2(5, 5)
 
         self.is_collidable = True
-        self.is_invincible = True
+        self.is_invincible = is_invincible
 
         self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
         self.hitbox = pygame.Rect(pos.x+self.hitoff.x, pos.y+self.hitoff.y, size.x - self.hitoff.x*2, size.y - self.hitoff.y*2)

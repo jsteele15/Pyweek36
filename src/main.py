@@ -43,8 +43,8 @@ def main():
     text9 = Text(30, "The Spice must flow!\n\n\n\n\n\n\n\n\n\nGet the cargo ships to the \nplanet on the left here", 0, 0)
     text10 = Text(30, "                                                Get the green ship\n                                                 to investigate the\n                                                       distress signal \n                                                    coming from the\n                                                         space station\n\n\n\n\n\n\n\n                                                     *AVOID \n                                                     ASTEROID \n                                                     FEILDS*", 0, 0)
     text11 = Text(30, "Destroy the Imperial ship (left), \nbefore the Rebel ship (right) crashes!", 0, 0)
-    text12 = Text(30, "Lv12", 0, 0)
-    textend = Text(30, "Lv12", 0, 0)
+    text12 = Text(30, "                                                These guys again!\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                Destroy the Earth for good!", 0, 0)
+    textend = Text(30, "This was a mistake, destroy the universe\nand with it, all life\n\n\n\n\n\n\n\n\n\n\n\n      *DARK MATTER GRAVITY NOW AFFECTS\n       PLANETS*", 0, 0)
     
     ###training level
     testent = Ship(Vec2(50, 100), ind = 1, angle = 180)
@@ -62,6 +62,10 @@ def main():
     butt4 = Buttons(3, "../res/dark_matter.png", Vec2(300, 500), size_x = 50, size_y = 50)
     butt5 = Buttons(3, "../res/dark_matter.png", Vec2(350, 250), size_x = 50, size_y = 50)
     butt6 = Buttons(3, "../res/dark_matter.png", Vec2(490, 250), size_x = 50, size_y = 50)
+    butt7 = Buttons(3, "../res/dark_matter.png", Vec2(200, 250), size_x = 50, size_y = 50)
+    butt8 = Buttons(3, "../res/dark_matter.png", Vec2(200, 400), size_x = 50, size_y = 50)
+    butt9 = Buttons(3, "../res/dark_matter.png", Vec2(550, 550), size_x = 50, size_y = 50)
+    butt10 = Buttons(3, "../res/dark_matter.png", Vec2(100, 100), size_x = 50, size_y = 50)
     
     
     button_list.append(butt1)
@@ -126,13 +130,18 @@ def main():
         AsteroidF(Vec2(300, settings.HEIGHT-100), ind = 0, angle = 0), AsteroidF(Vec2(-100, settings.HEIGHT-100), angle = 90, ind = 0), AsteroidF(Vec2(500, settings.HEIGHT - 100), angle = 0, ind = 1), AsteroidF(Vec2(100, settings.HEIGHT-100), angle = 0, ind = 0), AsteroidF(Vec2(700, settings.HEIGHT-100), ind = 1, angle = 180)]
     
     ###level 12 ents, destroy the earth again
-    l12_button = []
-    l12_ents = []
+    l12_button = [butt1, butt6, butt3, butt4, butt5, butt2]
+    l12_ents = [PlanetM(Vec2(settings.WIDTH/3-150, settings.HEIGHT/2), ind = 0, mass = 500000), PlanetS(Vec2(10, settings.HEIGHT/3 + 100), mass = 200000), PlanetM(Vec2(settings.WIDTH/2, settings.HEIGHT/3 + 100), ind = 2, mass = 500000),
+        Ship(Vec2(settings.WIDTH -100, settings.HEIGHT/2), thrust = Vec2(0, 0), ind = 17, angle = 0)]
     
     ###end ents, end of the universe
-    lend_button = []
-    lend_ents = []
+    lend_button = [butt1, butt6, butt3, butt4, butt5, butt2, butt7, butt8, butt9, butt10]
+    lend_ents = [PlanetM(Vec2(100, 150), ind = 2, mass = 5000000, can_move = True, is_invincible = False), PlanetM(Vec2(500, 100), ind = 3, mass = 500000,can_move = True, is_invincible = False ),
+        PlanetM(Vec2(300, 200), ind = 4, mass = 500000, can_move = True, is_invincible = False),PlanetM(Vec2(350, 400), ind = 5, mass = 500000, can_move = True, is_invincible = False),
+        PlanetL(Vec2(100, 350), ind = 4, mass = 500000, can_move = True, is_invincible = False), PlanetL(Vec2(550, 300), ind = 2, mass = 500000, can_move = True, is_invincible = False),
+        PlanetS(Vec2(300, 50), mass = 200000, ind = 3, can_move = True, is_invincible = False), PlanetS(Vec2(10, settings.HEIGHT/3 + 100), mass = 200000, can_move = True, is_invincible = False)]
     
+    ###last sections
     
     
     ###where it gets appended to the level lists
