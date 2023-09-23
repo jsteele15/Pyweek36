@@ -65,7 +65,9 @@ class Text():
     def draw(self, screen):
         #(text, colour, x, y)
         text_surface = self.game_font.render(self.level_text, False, self.colour)
+        text2_surface = self.game_font.render(self.level_text, False, (63, 63, 116))
         
+        screen.blit(text2_surface, (self.x, self.y))
+        screen.blit(text_surface, (self.x +2, self.y+2))
         
-        screen.blit(text_surface, (self.x, self.y))
         

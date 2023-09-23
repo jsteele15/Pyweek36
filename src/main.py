@@ -43,7 +43,7 @@ def main():
     
     
     ####mission texts
-    menu_text = Text(100, " Untitled \n Gravity\n Puzzler", 5, 5)
+    menu_text = Text(100, " Untitled \n Gravity\n Puzzler", 4, 4)
     menu_text_high = Text(100, " Untitled \n Gravity\n Puzzler", 0, 0, colour = (63, 63, 116))
     
     help_text = Text(20, "Press f for fullscreen\nPress ESC to exit", 0, settings.HEIGHT - 65)
