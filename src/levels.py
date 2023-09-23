@@ -20,7 +20,14 @@ def win_cond2(level, settings):
     return False
     
 def win_cond3(level, settings):
-    pass
+    dead_list = []
+    for i in range(len(settings.ent_list)):
+        if settings.ent_list[i].is_alive == False:
+            dead_list.append(1)
+    
+    if len(dead_list) >= 6:
+        return True
+    return False
     
 def win_cond4(level, settings):
     if settings.ent_list[0].rect.colliderect(settings.ent_list[1].rect):

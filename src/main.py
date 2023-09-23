@@ -33,8 +33,8 @@ def main():
     ####mission texts
     text1 = Text(30, "Dark matter can pull\nships and single commets with their gavity\n\nClick this purple dark matter here ->\n\n\n\n\n\n\nThen place it here ->\n\n\n       <-Then click here to start the level\n       <-Or click here to restart the level", 0, 0)
     text2 = Text(30, "Good, now\n\nget the Red \n\nship through \n\nthe planet and \n\nthe moon safely", settings.WIDTH - 280, 80)
-    text3 = Text(30, "Lv6", 0, 0)
-    text4 = Text(30, "That was lame.\n\n\n\n\n\n\n\n\n\n                     NOW LETS HIT THIS BLUE PLANET \n                                              WITH A METEORITE! \n                                           DON'T HIT THE MOON", 0, 0)
+    text3 = Text(30, "Lets make something cool. \n\nCrash all these meteorites into each other\n\nTo make a new planet", 0, 0)
+    text4 = Text(30, "That was lame.\n\n\n\n\n\n\n\n\n\n                   NOW LETS HIT THAT SAME PLANET \n                                              WITH A METEORITE! \n                                           DON'T HIT THE MOON", 0, 0)
     text5 = Text(30, "I bet we'll never hear from them again.\n\n\n\n\n\n\n\n\n\n\n\n                                             Lets get our friends\n                                                 to this small moon", 0, 0)
     text6 = Text(30, "We saved a life today, well done.\n\nNow lets murder, \n\nIdk, \n\nSix Federation ships\n\n\n\n\n\n\n\n\n\n\n\n\n", 0, 0)
     
@@ -75,8 +75,10 @@ def main():
     l2_ents = [Ship(Vec2(50, 100), thrust = Vec2(0.1, 0), ind = 2), PlanetM(Vec2(400, 75), ind = 2), PlanetS(Vec2(401, 350), ind = 1) ]
     
     ###level 3 ents, use meteorites to make a new planet
-    l3_button = []
-    l3_ents = []
+    l3_button = [butt1, butt5, butt3, butt4]
+    l3_ents = [Ship(Vec2(100 * i, settings.HEIGHT/2), thrust = Vec2(0, 0.01), ind = 8 + i, angle = 180) for x, i in enumerate(range(1, 7))]
+    
+    
     
     ###level 4 ents
     l4_button = [butt1, butt2, butt3, butt4, butt5]
