@@ -1,5 +1,6 @@
 # Pyweek 36
-Untitled Gravity Puzzler(UGP) involves you using gravity is to solve a series of puzzles.
+Untitled Gravity Puzzler(UGP) involves you using gravity created by 
+dark matter to solve a series of puzzles.
  
 How to run:
 
