@@ -58,7 +58,7 @@ def main():
     
     
     ###training level
-    testent = Ship(Vec2(50, 100), ind = 1, angle = 180)
+    testent = Ship(Vec2(50, 80), ind = 1, angle = 180)
     testent2 = DarkMatter(Vec2(400, 400))
     testent3 = PlanetS(Vec2(300, 350), ind = 2, mass = 0)
     ent_list.append(testent)

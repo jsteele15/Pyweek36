@@ -46,43 +46,6 @@ class Buttons(SpriteSheet):
 
 
 
-###actual buttons i think well need, need to remember to change the function reference
-"""
-###to restart whatever level your on
-rb = pygame.image.load(Path(r"../res/restart.png")).convert_alpha()
-restart_button = Buttons(6, rb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 100), 40, 40)
-
-###when youve finished the set up phase
-pb = pygame.image.load(Path(r"../res/play_but.png")).convert_alpha()
-play_button = Buttons(1, pb, 2, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 200), 100, 40)
-
-###exit button
-eb = pygame.image.load(Path(r"../res/exit.png")).convert_alpha()
-exit_button = Buttons(7, eb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 100), 40, 40)
-
-###level one button
-L1b = pygame.image.load(Path(r"../res/lv1.png")).convert_alpha()
-level_1_button = Buttons(2, L1b, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 200), 100, 40)
-
-###level two button
-L2b = pygame.image.load(Path(r"../res/lv2.png")).convert_alpha()
-level_2_button = Buttons(3, L2b, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 150), 100, 40)
-
-###level three button
-L3b = pygame.image.load(Path(r"../res/lv3.png")).convert_alpha()
-level_3_button = Buttons(4, L3b, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 100), 100, 40)
-
-###ready button, after youve finished setting everything up
-readb = pygame.image.load(Path(r"../res/ready.png")).convert_alpha()
-ready_button = Buttons(5, readb, 1, (settings.S_WIDTH - 100), (settings.S_HEIGHT - 200), 40, 40)
-
-
-
-#save, load button, idk, stretch goals init
-#save_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
-#load_button = Buttons(0, main_char_im, 3, 100, 100, 30, 52)
-
-"""
 class Text():
     def __init__(self, size, level_text, x, y):
         self.size = size
@@ -98,10 +61,3 @@ class Text():
         
         screen.blit(text_surface, (self.x, self.y))
         
-            
-        ###these tuples will contain all the elements needed to blit different aspects of the ui; also maybe a number
-        ###at the begining to decide if its going to be a status bar of a simple number text ect
-
-
-###text.Draw(f"Number of Kills: {0}", settings.RED, 30, 30) example of use
-

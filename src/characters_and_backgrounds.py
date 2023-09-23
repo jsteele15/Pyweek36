@@ -329,12 +329,6 @@ class Characters(SpriteSheet):
             if self.health >= 1:
                 self.rect.move_ip(0, -self.move_points)
 
-####some ships to see whats working 
-# ship_temp = pygame.image.load(Path(r"../res/ship.png")).convert_alpha()
-#practise_ship = Characters("left", "Star Bug", 270, 1, ship_temp, 1, 200, 200, 50, 50)
-
-#enterprise = Characters("up", "Star Bug", 0, 1, ship_temp, 1, 300, 300, 50, 50)
-
 
 
 ###a class for the blobs        
@@ -369,31 +363,5 @@ class Entity(SpriteSheet):
             change = i.x_pos - self.x_pos
             if i.x_pos - self.x_pos == range(0, 100):
                 i.move_points += change
-                
-        ##############################this formula definatly doesnt work, i havnt had a chance to test it        
-        ##############################i just wrote this as an example, refinment can come later
-
-#dm = pygame.image.load(Path(r"../res/dm.png")).convert_alpha()
-#practise_entity = Entity(dm, 1, 150, 150, 100, 100)
 
 
-###an obstacles class for ships to collide into
-class Obstacle(SpriteSheet):
-    def __init__(self, image, animation_steps, x_pos, y_pos, x_cut, y_cut):
-        
-        super().__init__(image, animation_steps, x_pos, y_pos, x_cut, y_cut)
-        
-    def Draw(self):
-        settings.screen.blit(self.animation_list[self.ind], self.rect)
-        
-#px = pygame.image.load(Path(r"../res/px.png")).convert_alpha()
-#planetx = Entity(px, 1, 500, 200, 120, 120)
-
-
-class BackGround(SpriteSheet):
-    pass
-    ###probably dont need a spritesheet for the background stuff
-    ###might not even need a class
-    #def __init__(self, image, animation_steps, x_pos, y_pos, x_cut, y_cut):
-        
-        #super().__init__(image, animation_steps, x_pos, y_pos, x_cut, y_cut)
