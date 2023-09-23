@@ -29,7 +29,12 @@ def pickup_dm(button, settings):
     settings.mouse.has_dm = True
     button.visible = False
 
-func_list = [ready_func, restart_func, exit_func, pickup_dm]
+def start_game(button, settings):
+    settings.PLAY = True
+    settings.current_level += 1
+    settings.load_level()
+
+func_list = [ready_func, restart_func, exit_func, pickup_dm, start_game]
 
 
 ###a practice function to make sure the list reference thing is working
@@ -108,6 +113,9 @@ def actions(ent_list, button_list, settings):
             if event.key == K_f:
                 ###sets it to full screen, probably need to be able to undo that
                 settings.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+            
+            #if event.key == K_r:
+                #settings.current_level = 0
             
         if event.type == KEYUP:
             pass

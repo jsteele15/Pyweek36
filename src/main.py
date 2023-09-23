@@ -31,6 +31,7 @@ def main():
     
     
     ####mission texts
+    menu_text = Text(100, " Untitled \n Gravity\n Puzzler", 0, 0)
     text1 = Text(30, "Dark matter can pull\nships and single commets with their gavity\n\nClick this purple dark matter here ->\n\n\n\n\n\n\nThen place it here ->\n\n\n       <-Then click here to start the level\n       <-Or click here to restart the level", 0, 0)
     text2 = Text(30, "Good, now\n\nget the Red \n\nship through \n\nthe planet and \n\nthe moon safely", settings.WIDTH - 280, 80)
     text3 = Text(30, "Lets make something cool. \n\nCrash all these meteorites into each other\n\nTo make a new planet", 0, 0)
@@ -45,6 +46,9 @@ def main():
     text11 = Text(30, "Destroy the Imperial ship (left), \nbefore the Rebel ship (right) crashes!", 0, 0)
     text12 = Text(30, "                                                These guys again!\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                Destroy the Earth for good!", 0, 0)
     textend = Text(30, "This was a mistake, destroy the universe\nand with it, all life\n\n\n\n\n\n\n\n\n\n\n\n      *DARK MATTER GRAVITY NOW AFFECTS\n       PLANETS*", 0, 0)
+    last_text = Text(25, "And with that, the\n   universe ends.\n\nThanks for playing.", 100, 100)
+    
+    
     
     ###training level
     testent = Ship(Vec2(50, 100), ind = 1, angle = 180)
@@ -67,12 +71,16 @@ def main():
     butt9 = Buttons(3, "../res/dark_matter.png", Vec2(550, 550), size_x = 50, size_y = 50)
     butt10 = Buttons(3, "../res/dark_matter.png", Vec2(100, 100), size_x = 50, size_y = 50)
     
+    start_button = Buttons(4, "../res/menu_ss.png", Vec2(settings.WIDTH/2 - 140, settings.HEIGHT -60), size_x = 120, size_y = 40, second_ind = 1)
+    end_button = Buttons(2, "../res/menu_ss.png", Vec2(settings.WIDTH/2 +20, settings.HEIGHT -60), size_x = 120, size_y = 40, ind = 2, second_ind = 3)
     
     button_list.append(butt1)
     button_list.append(butt2)
     button_list.append(butt3)
     
-    
+    ###menu
+    menu_button = [start_button, end_button]
+    menu_ents = [Ship(Vec2(500, settings.HEIGHT/2), thrust = Vec2(-0.1, 0), ind = 7)]
     
     ###level 2 stuff
     l2_button = [butt1, butt5, butt3, butt4]
@@ -142,9 +150,11 @@ def main():
         PlanetS(Vec2(300, 50), mass = 200000, ind = 3, can_move = True, is_invincible = False), PlanetS(Vec2(10, settings.HEIGHT/3 + 100), mass = 200000, can_move = True, is_invincible = False)]
     
     ###last sections
-    
+    last_button = []
+    last_ents = []
     
     ###where it gets appended to the level lists
+    menu = Level(menu_button, menu_ents, win_cond0)
     level1 = Level(button_list, ent_list, win_cond1)
     level2 = Level(l2_button, l2_ents, win_cond2)
     level3 = Level(l3_button, l3_ents, win_cond3)
@@ -158,9 +168,9 @@ def main():
     level11 = Level(l11_button, l11_ents, win_cond11)
     level12 = Level(l12_button, l12_ents, win_cond12)
     levelend = Level(lend_button, lend_ents, win_cond1end)
+    last = Level(last_button, last_ents, win_end)
     
-    
-    
+    settings.level_list.append(menu)
     settings.level_list.append(level1)
     settings.level_list.append(level2)
     settings.level_list.append(level3)
@@ -174,8 +184,10 @@ def main():
     settings.level_list.append(level11)
     settings.level_list.append(level12)
     settings.level_list.append(levelend)
+    settings.level_list.append(last)
     
     ###appending texts
+    text_list.append(menu_text)
     text_list.append(text1)
     text_list.append(text2)
     text_list.append(text3)
@@ -189,7 +201,7 @@ def main():
     text_list.append(text11)
     text_list.append(text12)
     text_list.append(textend)
-    
+    text_list.append(last_text)
     text_list.append("")
     
     settings.load_level()
@@ -198,6 +210,12 @@ def main():
     ###background image
     star_map = pygame.image.load("../res/testsky.png").convert_alpha()
     scaled_im2 = pygame.transform.scale(star_map,(1400,800))
+    
+    exp_im1 = pygame.image.load(Path(r"../res/explosion.png")).convert_alpha()
+    exp_im = pygame.transform.scale(exp_im1, (45600, 400))
+    explosion_sprite = SpriteSheet(exp_im, 114, settings.WIDTH/2, settings.HEIGHT/2, 400, 400)
+    exp_list = [explosion_sprite]
+    
     while settings.Running:
         screen.fill((0,0,0))
         ###blit background
@@ -207,20 +225,13 @@ def main():
         if settings.PAUSED == False:
             move_ents(settings.ent_list, settings)
             
-        draw_ents(settings.ent_list, settings.button_list, text_list, settings, screen)
-
-        if settings.level_list[settings.current_level].win_cond(settings.level_list[settings.current_level], settings):
-            settings.current_level += 1
-            settings.trail_points = []
-            settings.prev_trail_points = []
-            settings.load_level()
-            print("Win!!!!")
+        draw_ents(settings.ent_list, settings.button_list, text_list, settings, screen, exp_list)
         
         pygame.display.update()
         settings.clock.tick(60) 
 
-def draw_ents(ent_list, button_list, text_list, settings, screen):
-
+def draw_ents(ent_list, button_list, text_list, settings, screen, exp_list):
+    print(settings.PLAY)
     
     for i in range(0, len(settings.prev_trail_points)):  #draw prev trail live
         if len(settings.prev_trail_points[i]) >= 2:
@@ -244,6 +255,17 @@ def draw_ents(ent_list, button_list, text_list, settings, screen):
     for button in button_list:
         button.draw(screen)
     settings.mouse.draw(screen)
+    
+    ###to handle the end
+    if settings.current_level == 13:
+        screen.fill((0,0,0))
+        if settings.exp_ind <= 113:
+            for i in exp_list:
+                screen.blit(i.animation_list[int(settings.exp_ind)], (0, 0))
+            
+            settings.exp_ind += 1
+        else:
+            text_list[settings.current_level].draw(screen)
 
     
 
@@ -258,6 +280,12 @@ def move_ents(ent_list, settings):
                 settings.trail_points[index].append((ent.rect.x + 0.5*ent.rect.w, ent.rect.y+0.5*ent.rect.h))
     if settings.trail_count >= 3:
         settings.trail_count = 0
+        
+    if settings.level_list[settings.current_level].win_cond(settings.level_list[settings.current_level], settings):
+        settings.current_level += 1
+        settings.trail_points = []
+        settings.prev_trail_points = []
+        settings.load_level()
 
 if __name__ == "__main__":
     #Start_Menu()

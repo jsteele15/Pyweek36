@@ -8,6 +8,11 @@ class Level:
         self.win_cond = win_cond
         
 
+def win_cond0(level, settings):
+    if settings.PLAY == True:
+        return True
+    return False
+
 def win_cond1(level, settings):
     if settings.ent_list[0].is_alive == False:
         return True
@@ -61,7 +66,9 @@ def win_cond6(level, settings):
 
     
 def win_cond7(level, settings):
-    if settings.ent_list[0].rect.y <= 0 or settings.ent_list[0].rect.x <= 0:
+    if settings.ent_list[0].rect.y <= 0 and settings.ent_list[0].is_alive == True:
+        return True
+    if settings.ent_list[0].rect.x <= 0 and settings.ent_list[0].is_alive == True:
         return True
     if settings.ent_list[0].rect.y >= settings.HEIGHT and settings.ent_list[0].is_alive == True:
         return True
@@ -119,6 +126,11 @@ def win_cond1end(level, settings):
     if len(dead_list) >= 8:
         return True
     return False
+
+def win_end(level, settings):
+    pass
+
+
 
 
 

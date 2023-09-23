@@ -54,10 +54,13 @@ class Settings():
     started = False
 
     level_list = []
-    current_level = 12
+    current_level = 0
     
     ent_list = []
     button_list = []
+    
+    ###menu attributes
+    PLAY = False
     
     ####level 4 attributes
     FIRST_SHIP = False
@@ -67,6 +70,10 @@ class Settings():
     ###level 9 attributes
     FAILURE = False
 
+
+    ###explosion ind
+    exp_ind = 10
+    
     trail_count = 0
     trail_points = []
     prev_trail_points = []

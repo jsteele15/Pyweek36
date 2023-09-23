@@ -1,7 +1,12 @@
 import pygame
 from pathlib import Path
-"""
-pygame.mixer.init()
+
+try:
+    pygame.mixer.init()
+    sound =  True
+except:
+    sound = False
+###before doing anything music related, put it in an if statment
 
 class Music_Sound:
     def __init__(self, tag, file_loc):
@@ -20,7 +25,7 @@ class Music_Sound:
     def Load(self):
         ###need to load a track first before playing it
         pygame.mixer.music.load(self.file_loc)
-"""
+
 
 #track = Music_Sound("./res/tracklist_1.wav") ##an example of how this will work 
 #track.Load() this is to load what ever track has been made
