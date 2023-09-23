@@ -214,7 +214,32 @@ class DarkMatter(Ent):
         self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y, ind)
 
        
+class AsteroidF(Ent):
+    def __init__(self, pos: Vec2, vel: Vec2 = Vec2(0,0), ind = 0, angle: int = 0, thrust = Vec2(0,0), can_move = True, mass = 0):
+        self.image_path = "../res/meteor_field_ss.png"
+        size = Vec2(200,200)
+        self.mass = mass
+        self.can_move = False
+        self.is_alive = True
+        animation_steps = 3
+        self.hitoff = Vec2(5, 5)
 
+        self.is_collidable = True
+        self.is_invincible = True
+
+        self.rect = pygame.Rect(pos.x, pos.y, size.x, size.y)
+        self.hitbox = pygame.Rect(pos.x+self.hitoff.x, pos.y+self.hitoff.y, size.x - self.hitoff.x*2, size.y - self.hitoff.y*2)
+        self.pos = pos
+        self.vel = vel
+        
+        self.angle = angle
+        self.prev_angle = angle
+        self.thrust = thrust
+        
+        self.ID = Ent.ent_count
+        Ent.ent_count += 1
+        
+        self.sprites = SpriteSheet(pygame.image.load(Path(self.image_path)), animation_steps, pos.x, pos.y, size.x, size.y, ind)
         
 def calc_gravity(m1: int, m2: int, dist: Vec2):
     #standard gravity equation. Google it

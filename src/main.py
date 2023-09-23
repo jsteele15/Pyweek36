@@ -41,8 +41,8 @@ def main():
     text7 = Text(30, "*YOU NOW HAVE TO TAKE INTO ACCOUNT THE \nGRAVITY OF PLANETS AND MOONS*\n\n\n\n\n\n\n\nLook, there, a ship is \ngoing to be pulled into \nthat gas giant. Get them \nout of the planets orbit!", 0, 0)
     text8 = Text(30, "That was close.\n\n\n\n\n\n\n\n\n\n\n\n\n       Return this           family\n       home to the red planet ->", 0, 0)
     text9 = Text(30, "The Spice must flow!\n\n\n\n\n\n\n\n\n\nGet the cargo ships to the \nplanet on the left here", 0, 0)
-    text10 = Text(30, "Lv10", 0, 0)
-    text11 = Text(30, "Lv11", 0, 0)
+    text10 = Text(30, "                                                Get the green ship\n                                                 to investigate the\n                                                       distress signal \n                                                    coming from the\n                                                         space station\n\n\n\n\n\n\n\n                                                     *AVOID \n                                                     ASTEROID \n                                                     FEILDS*", 0, 0)
+    text11 = Text(30, "Destroy the Imperial ship (left), \nbefore the Rebel ship (right) crashes!", 0, 0)
     text12 = Text(30, "Lv12", 0, 0)
     textend = Text(30, "Lv12", 0, 0)
     
@@ -114,12 +114,16 @@ def main():
         Ship(Vec2(100, 100), thrust = Vec2(0, 0), ind = 8, angle = 180),  Ship(Vec2(500, 100), thrust = Vec2(0.05, 0), ind = 8, angle = 180), Ship(Vec2(settings.WIDTH/3 +80, settings.HEIGHT - 100), thrust = Vec2(-0.05, 0), ind = 8, angle = 0)]
     
     ###level 10 ents, investigate a distress beekon through a mine field
-    l10_button = []
-    l10_ents = []
+    l10_button = [butt1, butt6, butt3, butt4, butt5]
+    l10_ents = [PlanetS(Vec2(settings.WIDTH/2, 100), mass = 500000, ind = 5), Ship(Vec2(50, 300), thrust = Vec2(0, 0), ind = 3, angle = 270), PlanetS(Vec2(550, 370), mass = 500000, ind = 5),
+        AsteroidF(Vec2(0, 0), ind = 1), AsteroidF(Vec2(200, 0), ind = 0), AsteroidF(Vec2(100, settings.HEIGHT-200), ind = 1), AsteroidF(Vec2(300, settings.HEIGHT-250), ind = 0),
+        AsteroidF(Vec2(300, settings.HEIGHT-50), ind = 0, angle = 90), AsteroidF(Vec2(-100, settings.HEIGHT-200), angle = 180, ind = 0), AsteroidF(Vec2(-100, settings.HEIGHT), angle = 180, ind = 1), AsteroidF(Vec2(100, settings.HEIGHT), angle = 180, ind = 0)]
     
-    ###level 11 ents, get the rocket to the moon
-    l11_button = []
-    l11_ents = []
+    ###level 11 ents, rescue the rebel ship destroy the empire ship
+    l11_button = [butt1, butt6, butt3, butt4, butt5]
+    l11_ents = [Ship(Vec2(200, 100), thrust = Vec2(0, 0.1), ind = 4, angle = 180), Ship(Vec2(100, 100), thrust = Vec2(0.1, 0), ind = 5, angle = 180), PlanetM(Vec2(settings.WIDTH/2 - 100, settings.HEIGHT/2 - 100), ind = 5, mass = 400000), PlanetM(Vec2(500, 300), ind = 4, mass = 400000),
+        AsteroidF(Vec2(300, settings.HEIGHT-100), ind = 0, angle = 90), AsteroidF(Vec2(-100, settings.HEIGHT-100), angle = 180, ind = 0), AsteroidF(Vec2(500, settings.HEIGHT - 100), angle = 180, ind = 1), AsteroidF(Vec2(100, settings.HEIGHT-100), angle = 180, ind = 0), AsteroidF(Vec2(700, settings.HEIGHT-100), ind = 1, angle = 90),
+        AsteroidF(Vec2(300, settings.HEIGHT-100), ind = 0, angle = 0), AsteroidF(Vec2(-100, settings.HEIGHT-100), angle = 90, ind = 0), AsteroidF(Vec2(500, settings.HEIGHT - 100), angle = 0, ind = 1), AsteroidF(Vec2(100, settings.HEIGHT-100), angle = 0, ind = 0), AsteroidF(Vec2(700, settings.HEIGHT-100), ind = 1, angle = 180)]
     
     ###level 12 ents, destroy the earth again
     l12_button = []

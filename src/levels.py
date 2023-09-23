@@ -92,10 +92,17 @@ def win_cond9(level, settings):
     return False
 
 def win_cond10(level, settings):
-    pass
+    ###this means that if it hits an astroid field it shouldnt matter
+    if settings.ent_list[1].is_alive == True and settings.ent_list[1].rect.colliderect(settings.ent_list[2].rect):
+        return True
+        
+    return False
 
 def win_cond11(level, settings):
-    pass
+    if settings.ent_list[0].is_alive == True and settings.ent_list [1].is_alive == False:
+        return True
+    
+    return False
 
 def win_cond12(level, settings):
     pass

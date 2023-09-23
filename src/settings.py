@@ -54,7 +54,7 @@ class Settings():
     started = False
 
     level_list = []
-    current_level = 2
+    current_level = 10
     
     ent_list = []
     button_list = []
