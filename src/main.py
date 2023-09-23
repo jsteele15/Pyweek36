@@ -80,14 +80,14 @@ def main():
     skip_butt = Buttons(5, "../res/level_buttons_ss.png", Vec2(settings.WIDTH - 60, 550), size_x = 60, ind = 4, second_ind = 5)
     
     ###dark_matter
-    butt2 = Buttons(3, "../res/dark_matter.png", Vec2(630, 110), size_x = 50, size_y = 50, ind = 1)
-    butt4 = Buttons(3, "../res/dark_matter.png", Vec2(300, 500), size_x = 50, size_y = 50, ind = 1)
-    butt5 = Buttons(3, "../res/dark_matter.png", Vec2(350, 250), size_x = 50, size_y = 50, ind = 1)
-    butt6 = Buttons(3, "../res/dark_matter.png", Vec2(490, 250), size_x = 50, size_y = 50, ind = 1)
-    butt7 = Buttons(3, "../res/dark_matter.png", Vec2(200, 250), size_x = 50, size_y = 50, ind = 1)
-    butt8 = Buttons(3, "../res/dark_matter.png", Vec2(200, 400), size_x = 50, size_y = 50, ind = 1)
-    butt9 = Buttons(3, "../res/dark_matter.png", Vec2(550, 550), size_x = 50, size_y = 50, ind = 1)
-    butt10 = Buttons(3, "../res/dark_matter.png", Vec2(100, 100), size_x = 50, size_y = 50, ind = 1)
+    butt2 = Buttons(3, "../res/dark_matter.png", Vec2(630, 110), size_x = 50, size_y = 50, ind = 1, dm_but = True)
+    butt4 = Buttons(3, "../res/dark_matter.png", Vec2(300, 500), size_x = 50, size_y = 50, ind = 1, dm_but = True)
+    butt5 = Buttons(3, "../res/dark_matter.png", Vec2(350, 250), size_x = 50, size_y = 50, ind = 1, dm_but = True)
+    butt6 = Buttons(3, "../res/dark_matter.png", Vec2(490, 250), size_x = 50, size_y = 50, ind = 1, dm_but = True)
+    butt7 = Buttons(3, "../res/dark_matter.png", Vec2(200, 250), size_x = 50, size_y = 50, ind = 1, dm_but = True)
+    butt8 = Buttons(3, "../res/dark_matter.png", Vec2(200, 400), size_x = 50, size_y = 50, ind = 1, dm_but = True)
+    butt9 = Buttons(3, "../res/dark_matter.png", Vec2(550, 550), size_x = 50, size_y = 50, ind = 1, dm_but = True)
+    butt10 = Buttons(3, "../res/dark_matter.png", Vec2(100, 100), size_x = 50, size_y = 50, ind = 1, dm_but = True)
     menu_dm = Buttons(3, "../res/dark_matter.png", Vec2(500, 180), size_x = 50, size_y = 50, ind = 0)
     
     
@@ -282,7 +282,7 @@ def draw_ents(ent_list, button_list, text_list, settings, screen, exp_list):
     for ent in ent_list:
         ent.draw(screen)
     for button in button_list:
-        button.draw(screen)
+        button.draw(screen, settings)
     settings.mouse.draw(screen)
     
     ###to handle the end

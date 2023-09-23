@@ -4,7 +4,7 @@ from settings import*
 from pathlib import Path
 
 class Buttons(SpriteSheet):
-    def __init__(self, Function_Reference, image_path: str, pos: Vec2, visible: bool = True, size_x = 120, size_y = 40, ind = 0, second_ind = 0):
+    def __init__(self, Function_Reference, image_path: str, pos: Vec2, visible: bool = True, size_x = 120, size_y = 40, ind = 0, second_ind = 0, dm_but = False):
         ###we can give the button an int 0, 1, 2 ect. The use that later when it gets pressed
         ###to call methods from a list
         
@@ -14,6 +14,7 @@ class Buttons(SpriteSheet):
         self.Clicked_Twice = False
         self.rect = pygame.Rect(pos.x, pos.y, size_x, size_y)
         self.second_ind = second_ind
+        self.dm_but = dm_but
         
         ###this button class inherits from sprites sheet, this will allow us to make the buttons
         ###squishy?
@@ -28,7 +29,7 @@ class Buttons(SpriteSheet):
                 func_list[self.Function_Reference](self, settings)
                 
 
-    def draw(self, screen):
+    def draw(self, screen, settings):
         pos = pygame.mouse.get_pos()
         if self.rect.collidepoint(pos):
             new_ind = self.second_ind
@@ -36,7 +37,13 @@ class Buttons(SpriteSheet):
             new_ind = self.ind
         
         if self.visible:
-            screen.blit(self.animation_list[new_ind], self.rect)
+            if self.dm_but == False:
+                screen.blit(self.animation_list[new_ind], self.rect)
+            if self.dm_but == True:
+                if settings.started == False:
+                    screen.blit(self.animation_list[new_ind], self.rect)
+                if settings.started == True:
+                    pass
         
         
     def Reset(self):

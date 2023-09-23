@@ -26,8 +26,11 @@ def exit_func(button, settings):
     sys.exit()
 
 def pickup_dm(button, settings):
-    settings.mouse.has_dm = True
-    button.visible = False
+    if settings.started == False:
+        settings.mouse.has_dm = True
+        button.visible = False
+    else:
+        pass
 
 def start_game(button, settings):
     settings.PLAY = True
