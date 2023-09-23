@@ -35,10 +35,10 @@ def main():
     text2 = Text(30, "Good, now\n\nget the Red \n\nship through \n\nthe planet and \n\nthe moon safely", settings.WIDTH - 280, 80)
     text3 = Text(30, "That was lame.\n\n\n\n\n\n\n\n\n\n                     NOW LETS HIT THIS BLUE PLANET \n                                              WITH A METEORITE! \n                                           DON'T HIT THE MOON", 0, 0)
     text4 = Text(30, "I bet we'll never hear from them again.\n\n\n\n\n\n\n\n\n\n\n\n                                             Lets get our friends\n                                                 to this small moon", 0, 0)
-    text5 = Text(30, "I don't think that was a moon...\n\n\n\n\n\n\n\n\nLook, there, a ship is \ngoing to be pulled into \nthat gas giant. Get them \nout of the planets orbit!", 0, 0)
-    text6 = Text(30, "That was close.\n\n\n\n\n\n\n\n\n\n\n\n\n       Return this           family\n       home to the red planet ->", 0, 0)
-    text7 = Text(30, "We saved a life today, well done.\n\nNow lets murder, \n\nIdk, \n\nSix Federation ships\n\n\n\n\n\n\n\n\n\n\n\n\n", 0, 0)
-    text8 = Text(30, "Lv8", 0, 0)
+    text5 = Text(30, "We saved a life today, well done.\n\nNow lets murder, \n\nIdk, \n\nSix Federation ships\n\n\n\n\n\n\n\n\n\n\n\n\n", 0, 0)
+    text6 = Text(30, "Lv6", 0, 0)
+    text7 = Text(30, "*YOU NOW HAVE TO TAKE INTO ACCOUNT THE \nGRAVITY OF PLANETS AND MOONS*\n\n\n\n\n\n\n\nLook, there, a ship is \ngoing to be pulled into \nthat gas giant. Get them \nout of the planets orbit!", 0, 0)
+    text8 = Text(30, "That was close.\n\n\n\n\n\n\n\n\n\n\n\n\n       Return this           family\n       home to the red planet ->", 0, 0)
     
     ###training level
     testent = Ship(Vec2(50, 100), ind = 1, angle = 180)
@@ -80,24 +80,27 @@ def main():
     l4_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.01, 0), ind = 4, angle = 180), Ship(Vec2(50, settings.HEIGHT/2 - 50), thrust = Vec2(0.01, 0), ind = 6, angle = 180), 
         PlanetS(Vec2(settings.WIDTH-100, settings.HEIGHT/2 -50), mass = 0, ind = 4), PlanetL(Vec2(settings.WIDTH/3, settings.HEIGHT/2), mass = 0, ind = 4), PlanetL(Vec2(settings.WIDTH-100, settings.HEIGHT/4 - 100), mass = 0, ind = 5)]
     
-    ###level 5 ents
+    ####level 5 ents
     l5_button = [butt1, butt2, butt3, butt4, butt5, butt6]
-    l5_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.01, 0), ind = 7, angle = 180), PlanetL(Vec2(settings.WIDTH/2, settings.HEIGHT/2), ind = 0, mass = 10000000)]
-    
-    ###level 6 ents
-    l6_button = [butt1, butt2, butt3, butt4, butt5, butt6]
-    l6_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.1, 0), ind = 7, angle = 270), PlanetM(Vec2(settings.WIDTH/2 + 100, settings.HEIGHT -100), ind = 2, mass = 0),
-        PlanetL(Vec2(settings.WIDTH/2 + 100, settings.HEIGHT -280), ind = 3, mass = 1000000)]
-    
-    ####level 7 ents
-    l7_button = [butt1, butt2, butt3, butt4, butt5, butt6]
-    l7_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.01, 0), ind = 0, angle = 270), Ship(Vec2(100, settings.HEIGHT/2), thrust = Vec2(0.01, 0), ind = 0, angle = 270),
+    l5_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.01, 0), ind = 0, angle = 270), Ship(Vec2(100, settings.HEIGHT/2), thrust = Vec2(0.01, 0), ind = 0, angle = 270),
         Ship(Vec2(600, settings.HEIGHT/4 - 50), thrust = Vec2(-0.01, 0), ind = 0, angle = 90), Ship(Vec2(600, settings.HEIGHT - 100), thrust = Vec2(-0.01, 0), ind = 0, angle = 90),
         Ship(Vec2(300, 100), thrust = Vec2(0, 0.1), ind = 0, angle = 180), Ship(Vec2(400, 100), thrust = Vec2(0, 0.01), ind = 0, angle = 180)]
     
+    ###level 6 ents
+    l6_button = []
+    l6_ents = []
+
+    ###level 7 ents  LEVEL 7 IS WHEN YOU HAVE TO TAKE INTO ACCOUNT THE PLANETS GRAVITY
+    l7_button = [butt1, butt2, butt3, butt4, butt5, butt6]
+    l7_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.01, 0), ind = 7, angle = 180), PlanetL(Vec2(settings.WIDTH/2, settings.HEIGHT/2), ind = 0, mass = 5000000)]
+    
     ###level 8 ents
-    l8_button = []
-    l8_ents = []
+    l8_button = [butt1, butt2, butt3, butt4, butt5, butt6]
+    l8_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.1, 0), ind = 7, angle = 270), PlanetM(Vec2(settings.WIDTH/2 + 100, settings.HEIGHT -100), ind = 2, mass = 0),
+        PlanetL(Vec2(settings.WIDTH/2 + 100, settings.HEIGHT -280), ind = 3, mass = 1000000)]
+    
+    
+    
     
     ###where it gets appended to the level lists
     level1 = Level(button_list, ent_list, win_cond1)

@@ -36,23 +36,10 @@ def win_cond4(level, settings):
         return True
         
     return False
-
+    
 def win_cond5(level, settings):
-    if settings.ent_list[0].rect.y <= 0 or settings.ent_list[0].rect.x <= 0:
-        return True
-    if settings.ent_list[0].rect.y >= settings.HEIGHT and settings.ent_list[0].is_alive == True:
-        return True
-    if settings.ent_list[0].rect.x >= settings.WIDTH and settings.ent_list[0].is_alive == True:
-        return True
-    return False
-
-def win_cond6(level, settings):
-    if settings.ent_list[0].rect.colliderect(settings.ent_list[1].rect):
-        return True
-    return False
-
-def win_cond7(level, settings):
     dead_list = []
+   
     for i in range(len(settings.ent_list)):
         
         if settings.ent_list[i].is_alive == False:
@@ -62,8 +49,24 @@ def win_cond7(level, settings):
         return True
     return False
 
-def win_cond8(level, settings):
+def win_cond6(level, settings):
     pass
+    
+def win_cond7(level, settings):
+    if settings.ent_list[0].rect.y <= 0 or settings.ent_list[0].rect.x <= 0:
+        return True
+    if settings.ent_list[0].rect.y >= settings.HEIGHT and settings.ent_list[0].is_alive == True:
+        return True
+    if settings.ent_list[0].rect.x >= settings.WIDTH and settings.ent_list[0].is_alive == True:
+        return True
+    return False
+
+def win_cond8(level, settings):
+    if settings.ent_list[0].rect.colliderect(settings.ent_list[1].rect):
+        return True
+    return False
+
+
 
 
 
