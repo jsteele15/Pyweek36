@@ -66,7 +66,7 @@ def main():
     
     
     ###training level
-    testent = Ship(Vec2(50, 80), ind = 1, angle = 180)
+    testent = Ship(Vec2(50, 80), ind = 1, angle = 0)
     testent2 = DarkMatter(Vec2(400, 400))
     testent3 = PlanetS(Vec2(300, 350), ind = 2, mass = 0)
     ent_list.append(testent)
@@ -77,7 +77,7 @@ def main():
     #play button and restart
     butt1 = Buttons(0, "../res/level_buttons_ss.png", Vec2(0, 510), size_x = 60, ind = 2, second_ind = 3)
     butt3 = Buttons(1, "../res/level_buttons_ss.png", Vec2(0, 550), size_x = 60, second_ind = 1)
-    skip_butt = Buttons(5, "../res/level_buttons_ss.png", Vec2(settings.WIDTH - 60, 550), size_x = 60, ind = 4, second_ind = 5)
+    skip_butt = Buttons(5, "../res/level_buttons_ss.png", Vec2(settings.WIDTH - 60, 550), size_x = 60, ind = 4, second_ind = 5, dm_but = True)
     
     ###dark_matter
     butt2 = Buttons(3, "../res/dark_matter.png", Vec2(630, 110), size_x = 50, size_y = 50, ind = 1, dm_but = True)
@@ -100,11 +100,11 @@ def main():
     
     ###menu
     menu_button = [start_button, end_button, menu_dm]
-    menu_ents = [Ship(Vec2(505, settings.HEIGHT/2+10), thrust = Vec2(-0.1, 0), ind = 7), PlanetS(Vec2(500, 50), mass = 0, ind = 6)]
+    menu_ents = [Ship(Vec2(505, settings.HEIGHT/2+10), thrust = Vec2(-0.1, 0), ind = 7, angle = 180), PlanetS(Vec2(500, 50), mass = 0, ind = 6)]
     
     ###level 2 stuff
     l2_button = [butt1, butt5, butt3, butt4, skip_butt]
-    l2_ents = [Ship(Vec2(50, 100), thrust = Vec2(0.1, 0), ind = 2), PlanetM(Vec2(400, 75), ind = 2), PlanetS(Vec2(401, 350), ind = 1) ]
+    l2_ents = [Ship(Vec2(50, 100), thrust = Vec2(0.1, 0), ind = 2, angle = 90), PlanetM(Vec2(400, 75), ind = 2), PlanetS(Vec2(401, 350), ind = 1) ]
     
     ###level 3 ents, use meteorites to make a new planet
     l3_button = [butt1, butt5, butt3, butt4, skip_butt]
@@ -124,9 +124,9 @@ def main():
     
     ####level 6 ents
     l6_button = [butt1, butt2, butt3, butt4, butt5, butt6, skip_butt]
-    l6_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.01, 0), ind = 0, angle = 270), Ship(Vec2(100, settings.HEIGHT/2), thrust = Vec2(0.01, 0), ind = 0, angle = 270),
-        Ship(Vec2(600, settings.HEIGHT/4 - 50), thrust = Vec2(-0.01, 0), ind = 0, angle = 90), Ship(Vec2(600, settings.HEIGHT - 100), thrust = Vec2(-0.01, 0), ind = 0, angle = 90),
-        Ship(Vec2(300, 100), thrust = Vec2(0, 0.1), ind = 0, angle = 180), Ship(Vec2(400, 100), thrust = Vec2(0, 0.01), ind = 0, angle = 180)]
+    l6_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.01, 0), ind = 0, angle = 90), Ship(Vec2(100, settings.HEIGHT/2), thrust = Vec2(0.01, 0), ind = 0, angle = 90),
+        Ship(Vec2(600, settings.HEIGHT/4 - 50), thrust = Vec2(-0.01, 0), ind = 0, angle = 270), Ship(Vec2(600, settings.HEIGHT - 100), thrust = Vec2(-0.01, 0), ind = 0, angle = 270),
+        Ship(Vec2(300, 100), thrust = Vec2(0, 0.1), ind = 0, angle = 0), Ship(Vec2(400, 100), thrust = Vec2(0, 0.01), ind = 0, angle = 0)]
     
     
 
@@ -136,13 +136,13 @@ def main():
     
     ###level 8 ents
     l8_button = [butt1, butt2, butt3, butt4, butt5, butt6, skip_butt]
-    l8_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.05, 0), ind = 7, angle = 270), PlanetM(Vec2(settings.WIDTH/2 + 100, settings.HEIGHT -100), ind = 2, mass = 0),
+    l8_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.05, 0), ind = 7, angle = 90), PlanetM(Vec2(settings.WIDTH/2 + 100, settings.HEIGHT -100), ind = 2, mass = 0),
         PlanetL(Vec2(settings.WIDTH/2 + 100, settings.HEIGHT -280), ind = 3, mass = 1000000)]
     
     ###level 9 ents, the spice must flow
     l9_button = [butt1, butt2, butt3, butt4, butt5, butt6, skip_butt]
     l9_ents = [PlanetL(Vec2(settings.WIDTH/4-75, settings.HEIGHT/2- 75), ind = 2, mass = 500000), PlanetL(Vec2(settings.WIDTH/2 + 100, settings.HEIGHT/2-75), ind = 4, mass = 400000),
-        Ship(Vec2(100, 100), thrust = Vec2(0, 0), ind = 8, angle = 180),  Ship(Vec2(500, 100), thrust = Vec2(0.05, 0), ind = 8, angle = 180), Ship(Vec2(settings.WIDTH/3 +80, settings.HEIGHT - 100), thrust = Vec2(-0.05, 0), ind = 8, angle = 0)]
+        Ship(Vec2(100, 100), thrust = Vec2(0, 0), ind = 8, angle = 0),  Ship(Vec2(500, 100), thrust = Vec2(0.05, 0), ind = 8, angle = 0), Ship(Vec2(settings.WIDTH/3 +80, settings.HEIGHT - 100), thrust = Vec2(-0.05, 0), ind = 8, angle = 180)]
     
     ###level 10 ents, investigate a distress beekon through a mine field
     l10_button = [butt1, butt6, butt3, butt4, butt5, skip_butt]
@@ -152,7 +152,7 @@ def main():
     
     ###level 11 ents, rescue the rebel ship destroy the empire ship
     l11_button = [butt1, butt6, butt3, butt4, butt5, skip_butt]
-    l11_ents = [Ship(Vec2(200, 100), thrust = Vec2(0, 0.1), ind = 18, angle = 0), Ship(Vec2(100, 100), thrust = Vec2(0.1, 0), ind = 5, angle = 180), PlanetM(Vec2(settings.WIDTH/2 - 100, settings.HEIGHT/2 - 100), ind = 5, mass = 400000), PlanetM(Vec2(500, 300), ind = 4, mass = 400000),
+    l11_ents = [Ship(Vec2(200, 100), thrust = Vec2(0, 0.1), ind = 18, angle = 0), Ship(Vec2(100, 100), thrust = Vec2(0.1, 0), ind = 5, angle = 0), PlanetM(Vec2(settings.WIDTH/2 - 100, settings.HEIGHT/2 - 100), ind = 5, mass = 400000), PlanetM(Vec2(500, 300), ind = 4, mass = 400000),
         AsteroidF(Vec2(300, settings.HEIGHT-100), ind = 0, angle = 90), AsteroidF(Vec2(-100, settings.HEIGHT-100), angle = 180, ind = 0), AsteroidF(Vec2(500, settings.HEIGHT - 100), angle = 180, ind = 1), AsteroidF(Vec2(100, settings.HEIGHT-100), angle = 180, ind = 0), AsteroidF(Vec2(700, settings.HEIGHT-100), ind = 1, angle = 90),
         AsteroidF(Vec2(200, settings.HEIGHT-100), ind = 0, angle = 0), AsteroidF(Vec2(0, settings.HEIGHT-100), angle = 90, ind = 0), AsteroidF(Vec2(400, settings.HEIGHT - 100), angle = 0, ind = 1), AsteroidF(Vec2(600, settings.HEIGHT-100), angle = 0, ind = 0), AsteroidF(Vec2(800, settings.HEIGHT-100), ind = 1, angle = 180)]
     
