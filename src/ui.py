@@ -47,16 +47,17 @@ class Buttons(SpriteSheet):
 
 
 class Text():
-    def __init__(self, size, level_text, x, y):
+    def __init__(self, size, level_text, x, y, colour = (255, 255, 255)):
         self.size = size
         self.level_text = level_text
         self.x = x
         self.y = y
+        self.colour = colour
         self.game_font = pygame.font.Font(Path(r'../res/Audiowide-Regular.ttf'), self.size)
         
     def draw(self, screen):
         #(text, colour, x, y)
-        text_surface = self.game_font.render(self.level_text, False, (255, 255, 255))
+        text_surface = self.game_font.render(self.level_text, False, self.colour)
         
         
         screen.blit(text_surface, (self.x, self.y))

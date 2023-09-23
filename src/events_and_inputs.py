@@ -66,8 +66,9 @@ def actions(ent_list, button_list, settings):
                 ###sets it to full screen, probably need to be able to undo that
                 settings.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
             
-            #if event.key == K_r:
-                #settings.current_level = 0
+            if event.key == K_r:
+                settings.current_level = 0
+                settings.load_level()
             
         if event.type == KEYUP:
             pass

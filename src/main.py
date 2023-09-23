@@ -43,7 +43,9 @@ def main():
     
     
     ####mission texts
-    menu_text = Text(100, " Untitled \n Gravity\n Puzzler", 0, 0)
+    menu_text = Text(100, " Untitled \n Gravity\n Puzzler", 5, 5)
+    menu_text_high = Text(100, " Untitled \n Gravity\n Puzzler", 0, 0, colour = (63, 63, 116))
+    
     help_text = Text(20, "Press f for fullscreen\nPress ESC to exit", 0, settings.HEIGHT - 65)
     text1 = Text(30, "Dark matter can pull\nships and single commets with their gavity\n\nClick this grey dark matter here ->\n\n\n\n\n\n\nThen place it here ->   <- once purple, the dark \n                                         matter has gravity\n\n       <-Then click here to start the level\n       <-Or click here to restart the level", 0, 0)
     text2 = Text(30, "Good, now\n\nget the Red \n\nship past \n\nthe planet and \n\nthe moon safely", settings.WIDTH - 280, 80)
@@ -58,8 +60,8 @@ def main():
     text10 = Text(30, "                                                Get the green ship\n                                                 to investigate the\n                                                       distress signal \n                                                    coming from the\n                                                         space station\n\n\n\n\n\n                                                   ->\n\n                                                     *AVOID \n                                                     ASTEROID \n                                                     FEILDS*", 0, 0)
     text11 = Text(30, "Destroy the Imperial ship (left), \nbefore the Rebel ship (right) crashes!", 0, 0)
     text12 = Text(30, "                                                These guys again!\n\n\n\n\n\n\n\n\n\n\n\n\n\n                          Destroy the Earth for good!", 0, 0)
-    textend = Text(30, "This was a mistake, destroy the universe\nand with it, all life\n\n\n\n\n\n\n\n\n\n\n\n      *DARK MATTER GRAVITY NOW AFFECTS\n       PLANETS*", 0, 0)
-    last_text = Text(25, "And with that, the\n   universe ends.\n\nThanks for playing.", 100, 100)
+    textend = Text(30, "This was a mistake, destroy the universe\nand with it, all life\n\n\n\n\n\n\n\n\n\n\n\n      *DARK MATTER GRAVITY NOW AFFECTS\n       PLANETS AND MOONS*", 0, 0)
+    last_text = Text(25, "And with that, the\n   universe ends.\n\nThanks for playing.\n\n\n\n\n\n\n\n\nCredits - Lime Gang\nPreatomicprince, Jimbo Jones, Vaugbe\nPress r to return to the main menu", 100, 100)
     
     
     
@@ -98,7 +100,7 @@ def main():
     
     ###menu
     menu_button = [start_button, end_button, menu_dm]
-    menu_ents = [Ship(Vec2(505, settings.HEIGHT/2+10), thrust = Vec2(-0.1, 0), ind = 7), PlanetS(Vec2(500, 50), mass = 0)]
+    menu_ents = [Ship(Vec2(505, settings.HEIGHT/2+10), thrust = Vec2(-0.1, 0), ind = 7), PlanetS(Vec2(500, 50), mass = 0, ind = 6)]
     
     ###level 2 stuff
     l2_button = [butt1, butt5, butt3, butt4, skip_butt]
@@ -144,7 +146,7 @@ def main():
     
     ###level 10 ents, investigate a distress beekon through a mine field
     l10_button = [butt1, butt6, butt3, butt4, butt5, skip_butt]
-    l10_ents = [PlanetS(Vec2(settings.WIDTH/2, 100), mass = 500000, ind = 5), Ship(Vec2(50, 300), thrust = Vec2(0, 0), ind = 3, angle = 270), PlanetS(Vec2(550, 370), mass = 500000, ind = 6),
+    l10_ents = [PlanetS(Vec2(settings.WIDTH/2, 100), mass = 500000, ind = 5), Ship(Vec2(50, 300), thrust = Vec2(0, 0), ind = 3, angle = 90), PlanetS(Vec2(550, 370), mass = 500000, ind = 6),
         AsteroidF(Vec2(0, 0), ind = 1), AsteroidF(Vec2(200, 0), ind = 0), AsteroidF(Vec2(100, settings.HEIGHT-200), ind = 1), AsteroidF(Vec2(300, settings.HEIGHT-250), ind = 0),
         AsteroidF(Vec2(300, settings.HEIGHT-50), ind = 0, angle = 90), AsteroidF(Vec2(-100, settings.HEIGHT-200), angle = 180, ind = 0), AsteroidF(Vec2(-100, settings.HEIGHT), angle = 180, ind = 1), AsteroidF(Vec2(100, settings.HEIGHT), angle = 180, ind = 0)]
     
@@ -246,6 +248,7 @@ def main():
         
         ###for a press f to do fullscreen
         if settings.current_level == 0:
+            menu_text_high.draw(screen)
             help_text.draw(screen)
 
         actions(settings.ent_list, settings.button_list, settings)
