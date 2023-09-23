@@ -76,7 +76,7 @@ def win_cond7(level, settings):
     return False
 
 def win_cond8(level, settings):
-    if settings.ent_list[0].rect.colliderect(settings.ent_list[1].rect):
+    if settings.ent_list[0].is_alive == True and settings.ent_list[0].rect.colliderect(settings.ent_list[1].rect):
         return True
     return False
 
