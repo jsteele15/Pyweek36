@@ -54,7 +54,7 @@ class Settings():
     started = False
 
     level_list = []
-    current_level = 7
+    current_level = 8
     
     ent_list = []
     button_list = []
@@ -63,6 +63,9 @@ class Settings():
     FIRST_SHIP = False
     SECOND_SHIP = False
 
+
+    ###level 9 attributes
+    FAILURE = False
 
     trail_count = 0
     trail_points = []

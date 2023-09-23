@@ -33,17 +33,23 @@ def main():
     ####mission texts
     text1 = Text(30, "Dark matter can pull\nships and single commets with their gavity\n\nClick this purple dark matter here ->\n\n\n\n\n\n\nThen place it here ->\n\n\n       <-Then click here to start the level\n       <-Or click here to restart the level", 0, 0)
     text2 = Text(30, "Good, now\n\nget the Red \n\nship through \n\nthe planet and \n\nthe moon safely", settings.WIDTH - 280, 80)
-    text3 = Text(30, "That was lame.\n\n\n\n\n\n\n\n\n\n                     NOW LETS HIT THIS BLUE PLANET \n                                              WITH A METEORITE! \n                                           DON'T HIT THE MOON", 0, 0)
-    text4 = Text(30, "I bet we'll never hear from them again.\n\n\n\n\n\n\n\n\n\n\n\n                                             Lets get our friends\n                                                 to this small moon", 0, 0)
-    text5 = Text(30, "We saved a life today, well done.\n\nNow lets murder, \n\nIdk, \n\nSix Federation ships\n\n\n\n\n\n\n\n\n\n\n\n\n", 0, 0)
-    text6 = Text(30, "Lv6", 0, 0)
+    text3 = Text(30, "Lv6", 0, 0)
+    text4 = Text(30, "That was lame.\n\n\n\n\n\n\n\n\n\n                     NOW LETS HIT THIS BLUE PLANET \n                                              WITH A METEORITE! \n                                           DON'T HIT THE MOON", 0, 0)
+    text5 = Text(30, "I bet we'll never hear from them again.\n\n\n\n\n\n\n\n\n\n\n\n                                             Lets get our friends\n                                                 to this small moon", 0, 0)
+    text6 = Text(30, "We saved a life today, well done.\n\nNow lets murder, \n\nIdk, \n\nSix Federation ships\n\n\n\n\n\n\n\n\n\n\n\n\n", 0, 0)
+    
     text7 = Text(30, "*YOU NOW HAVE TO TAKE INTO ACCOUNT THE \nGRAVITY OF PLANETS AND MOONS*\n\n\n\n\n\n\n\nLook, there, a ship is \ngoing to be pulled into \nthat gas giant. Get them \nout of the planets orbit!", 0, 0)
     text8 = Text(30, "That was close.\n\n\n\n\n\n\n\n\n\n\n\n\n       Return this           family\n       home to the red planet ->", 0, 0)
+    text9 = Text(30, "The Spice must flow!\n\n\n\n\n\n\n\n\n\nGet the cargo ships to the \nplanet on the left here", 0, 0)
+    text10 = Text(30, "Lv10", 0, 0)
+    text11 = Text(30, "Lv11", 0, 0)
+    text12 = Text(30, "Lv12", 0, 0)
+    textend = Text(30, "Lv12", 0, 0)
     
     ###training level
     testent = Ship(Vec2(50, 100), ind = 1, angle = 180)
     testent2 = DarkMatter(Vec2(400, 400))
-    testent3 = PlanetS(Vec2(300, 350), ind = 2)
+    testent3 = PlanetS(Vec2(300, 350), ind = 2, mass = 0)
     ent_list.append(testent)
     #ent_list.append(testent2)
     ent_list.append(testent3)
@@ -68,27 +74,28 @@ def main():
     l2_button = [butt1, butt5, butt3, butt4]
     l2_ents = [Ship(Vec2(50, 100), thrust = Vec2(0.1, 0), ind = 2), PlanetM(Vec2(400, 75), ind = 2), PlanetS(Vec2(401, 350), ind = 1) ]
     
-    
-    ###level 3 ents
-    l3_button = [butt1, butt2, butt3, butt4, butt5]
-    l3_ents = [Ship(Vec2(50, settings.HEIGHT/2), thrust = Vec2(0.01, 0), ind = 9, angle = 90), 
-        PlanetM(Vec2(settings.WIDTH - 100, settings.HEIGHT/3), ind = 1, mass = 0), PlanetS(Vec2(settings.WIDTH/3, settings.HEIGHT/2), mass = 0)]
-    
+    ###level 3 ents, use meteorites to make a new planet
+    l3_button = []
+    l3_ents = []
     
     ###level 4 ents
     l4_button = [butt1, butt2, butt3, butt4, butt5]
-    l4_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.01, 0), ind = 4, angle = 180), Ship(Vec2(50, settings.HEIGHT/2 - 50), thrust = Vec2(0.01, 0), ind = 6, angle = 180), 
+    l4_ents = [Ship(Vec2(50, settings.HEIGHT/2), thrust = Vec2(0.01, 0), ind = 9, angle = 90), 
+        PlanetM(Vec2(settings.WIDTH - 100, settings.HEIGHT/3), ind = 1, mass = 0), PlanetS(Vec2(settings.WIDTH/3, settings.HEIGHT/2), mass = 0)]
+    
+    
+    ###level  ents
+    l5_button = [butt1, butt2, butt3, butt4, butt5]
+    l5_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.01, 0), ind = 4, angle = 180), Ship(Vec2(50, settings.HEIGHT/2 - 50), thrust = Vec2(0.01, 0), ind = 6, angle = 180), 
         PlanetS(Vec2(settings.WIDTH-100, settings.HEIGHT/2 -50), mass = 0, ind = 4), PlanetL(Vec2(settings.WIDTH/3, settings.HEIGHT/2), mass = 0, ind = 4), PlanetL(Vec2(settings.WIDTH-100, settings.HEIGHT/4 - 100), mass = 0, ind = 5)]
     
-    ####level 5 ents
-    l5_button = [butt1, butt2, butt3, butt4, butt5, butt6]
-    l5_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.01, 0), ind = 0, angle = 270), Ship(Vec2(100, settings.HEIGHT/2), thrust = Vec2(0.01, 0), ind = 0, angle = 270),
+    ####level 6 ents
+    l6_button = [butt1, butt2, butt3, butt4, butt5, butt6]
+    l6_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.01, 0), ind = 0, angle = 270), Ship(Vec2(100, settings.HEIGHT/2), thrust = Vec2(0.01, 0), ind = 0, angle = 270),
         Ship(Vec2(600, settings.HEIGHT/4 - 50), thrust = Vec2(-0.01, 0), ind = 0, angle = 90), Ship(Vec2(600, settings.HEIGHT - 100), thrust = Vec2(-0.01, 0), ind = 0, angle = 90),
         Ship(Vec2(300, 100), thrust = Vec2(0, 0.1), ind = 0, angle = 180), Ship(Vec2(400, 100), thrust = Vec2(0, 0.01), ind = 0, angle = 180)]
     
-    ###level 6 ents
-    l6_button = []
-    l6_ents = []
+    
 
     ###level 7 ents  LEVEL 7 IS WHEN YOU HAVE TO TAKE INTO ACCOUNT THE PLANETS GRAVITY
     l7_button = [butt1, butt2, butt3, butt4, butt5, butt6]
@@ -99,6 +106,26 @@ def main():
     l8_ents = [Ship(Vec2(100, settings.HEIGHT/3 - 50), thrust = Vec2(0.1, 0), ind = 7, angle = 270), PlanetM(Vec2(settings.WIDTH/2 + 100, settings.HEIGHT -100), ind = 2, mass = 0),
         PlanetL(Vec2(settings.WIDTH/2 + 100, settings.HEIGHT -280), ind = 3, mass = 1000000)]
     
+    ###level 9 ents, the spice must flow
+    l9_button = [butt1, butt2, butt3, butt4, butt5, butt6]
+    l9_ents = [PlanetL(Vec2(settings.WIDTH/4-75, settings.HEIGHT/2- 75), ind = 2, mass = 500000), PlanetL(Vec2(settings.WIDTH/2 + 100, settings.HEIGHT/2-75), ind = 4, mass = 400000),
+        Ship(Vec2(100, 100), thrust = Vec2(0, 0), ind = 8, angle = 180),  Ship(Vec2(500, 100), thrust = Vec2(0.05, 0), ind = 8, angle = 180), Ship(Vec2(settings.WIDTH/3 +80, settings.HEIGHT - 100), thrust = Vec2(-0.05, 0), ind = 8, angle = 0)]
+    
+    ###level 10 ents, investigate a distress beekon through a mine field
+    l10_button = []
+    l10_ents = []
+    
+    ###level 11 ents, get the rocket to the moon
+    l11_button = []
+    l11_ents = []
+    
+    ###level 12 ents, destroy the earth again
+    l12_button = []
+    l12_ents = []
+    
+    ###end ents, end of the universe
+    lend_button = []
+    lend_ents = []
     
     
     
@@ -111,6 +138,13 @@ def main():
     level6 = Level(l6_button, l6_ents, win_cond6)
     level7 = Level(l7_button, l7_ents, win_cond7)
     level8 = Level(l8_button, l8_ents, win_cond8)
+    level9 = Level(l9_button, l9_ents, win_cond9)
+    level10 = Level(l10_button, l10_ents, win_cond10)
+    level11 = Level(l11_button, l11_ents, win_cond11)
+    level12 = Level(l12_button, l12_ents, win_cond12)
+    levelend = Level(lend_button, lend_ents, win_cond1end)
+    
+    
     
     settings.level_list.append(level1)
     settings.level_list.append(level2)
@@ -120,6 +154,11 @@ def main():
     settings.level_list.append(level6)
     settings.level_list.append(level7)
     settings.level_list.append(level8)
+    settings.level_list.append(level9)
+    settings.level_list.append(level10)
+    settings.level_list.append(level11)
+    settings.level_list.append(level12)
+    settings.level_list.append(levelend)
     
     ###appending texts
     text_list.append(text1)
@@ -130,6 +169,11 @@ def main():
     text_list.append(text6)
     text_list.append(text7)
     text_list.append(text8)
+    text_list.append(text9)
+    text_list.append(text10)
+    text_list.append(text11)
+    text_list.append(text12)
+    text_list.append(textend)
     
     text_list.append("")
     

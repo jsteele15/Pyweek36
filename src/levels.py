@@ -18,26 +18,29 @@ def win_cond2(level, settings):
         if settings.ent_list[0].is_alive == True:
             return True
     return False
-
+    
 def win_cond3(level, settings):
+    pass
+    
+def win_cond4(level, settings):
     if settings.ent_list[0].rect.colliderect(settings.ent_list[1].rect):
         print("yes")
         return True
     return False
     
-def win_cond4(level, settings):
+def win_cond5(level, settings):
     if settings.ent_list[0].rect.colliderect(settings.ent_list[2].rect):
         settings.FIRST_SHIP = True
         
     if settings.ent_list[1].rect.colliderect(settings.ent_list[2].rect):
         settings.SECOND_SHIP = True
     if settings.FIRST_SHIP == True and settings.SECOND_SHIP == True:
-        print("dsafnugniu")
+        
         return True
         
     return False
     
-def win_cond5(level, settings):
+def win_cond6(level, settings):
     dead_list = []
    
     for i in range(len(settings.ent_list)):
@@ -49,8 +52,6 @@ def win_cond5(level, settings):
         return True
     return False
 
-def win_cond6(level, settings):
-    pass
     
 def win_cond7(level, settings):
     if settings.ent_list[0].rect.y <= 0 or settings.ent_list[0].rect.x <= 0:
@@ -66,9 +67,33 @@ def win_cond8(level, settings):
         return True
     return False
 
+def win_cond9(level, settings):
+    ###might need to change this later to take into account other ships crashing into the right planet
+    ship_land_list = []
+    for i in range(len(settings.ent_list)):
+        if settings.ent_list[i].is_alive == False:
+            ship_land_list.append(1)
+        
+    if settings.ent_list[3].rect.colliderect(settings.ent_list[1].rect) and settings.ent_list[3].is_alive == False:
+        settings.FAILURE = True
+            
+    if settings.ent_list[3].is_alive == True:
+        settings.FAILURE = False
+      
+    if len(ship_land_list) >= 3 and settings.FAILURE == False:
+        return True
+    return False
 
+def win_cond10(level, settings):
+    pass
 
+def win_cond11(level, settings):
+    pass
 
+def win_cond12(level, settings):
+    pass
+def win_cond1end(level, settings):
+    pass
 
 
 
