@@ -3,7 +3,7 @@ Untitled Gravity Puzzler(UGP) involves you using gravity is to solve a series of
  
 How to run:
 
-Click play.
+Click play on the main file in the res folder.
 
 How to play:
 
