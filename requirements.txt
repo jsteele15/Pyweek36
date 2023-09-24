@@ -1,0 +1,3 @@
+#Should just require pygame. 
+#No known conflicts with older or newer versions of pygame or python. 
+pygame-ce
